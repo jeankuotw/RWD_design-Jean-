@@ -1,0 +1,57 @@
+// 滿版layout
+@mixin fix_layout_wrap{
+	max-width: 100%;
+	margin: 0 auto;
+	// 設定背景圖片
+	background-image: url(../img/photo-bg.jpg);	
+	background-attachment:fixed;	// 背景固定不動
+	background-size: cover;	// 圖片會塞滿整個網頁
+	background-position:bottom center;	// 圖片會先從下面開始顯示
+}
+
+@mixin clearfix{
+	&::after{
+		display:block;
+		clear:both;
+		content:"";
+	}
+}
+
+@mixin fix_layout_header{
+	max-width: 100%;
+	position:fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: 20px;
+	z-index:99;
+	background-color: #000;
+	opacity: 80%;
+	// 呼叫mixin:clearfix功能
+	@include clearfix;
+}
+
+@mixin fix_layout_menu{
+	float:right;
+	li{
+		float:left;
+		margin-right: 20px;
+		a{			
+			text-decoration: none;
+			background-color: #fff;
+			padding: 10px 20px;
+		}
+		a:hover{
+			border-bottom: 3px solid red;
+		}			
+	}
+}
+
+@mixin fix_layout_content{
+    padding-top: 55px;
+}
+
+@mixin footer{
+	padding: 20px;
+	p{text-align: center;}
+}

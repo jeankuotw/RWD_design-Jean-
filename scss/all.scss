@@ -1,0 +1,117 @@
+// reset css
+@import "_reset.scss";
+
+$fs-m:14px;
+$fs-l:$fs-m*1.2;
+$fs-s:$fs-m*0.8;
+
+
+
+*{
+	// CSS3語法:讓div的寬度不被padding,border影響
+	box-sizing: border-box;
+	// 舊firefox用
+	-moz-box-sizing:border-box;
+	// 舊Ghrome用
+	-webkit-box-sizing:border-box;
+	font-size:$fs-m	
+}
+
+body{
+	font-family:Arial, Helvetica,"微軟正黑體" ,sans-serif;
+	background-color: #fff;
+}
+
+// ------ 共通區header(Start) -------
+.wrap{
+	max-width: 100%;
+	margin: 0 auto;	
+}
+
+.nav{
+	z-index: 2;
+	// background-color: #fff;
+	// opacity: 50%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	.header{
+		max-width: 1366px;
+		// background-color: yellow;
+		padding: 10px 50px;
+		margin: 0 auto;
+
+
+		// clearfix設定
+		&::after{
+			display:block;
+			clear:both;
+			content:"";
+		}
+		.logo{
+			// 浮動在左邊
+			float: left;
+			width: 150px;
+			height: 50px;
+			background-color: #000;
+		}
+		.login{
+			// 浮動在右邊
+			float: right;
+			text-decoration: none;
+			color:#fff;
+			border:1px solid #fff;
+			border-radius: 1px;
+			// box-shadow: 1px 1px gray;
+			padding: 15px 20px;
+			font-weight: bolder;
+			letter-spacing: 3px;
+			font-size:$fs-s;
+		}
+		.login:hover{
+				background-color: #fff;
+				color:#000;
+				transition:all 0.3s;
+			}
+		.menu{
+			// 浮動在右邊
+			float: right;
+			margin-right: 20px;
+			li{
+				// 水平排列
+				float: left;
+				padding: 15px 20px;
+				a{					
+					text-decoration: none;
+					color:#fff;										
+					font-weight: bolder;
+					letter-spacing: 3px;
+					padding-bottom: 10px;
+					font-size:$fs-s;
+				}
+				a:hover{
+					border-bottom: 3px solid #fff;
+					// box-shadow: 0px 1px gray;					
+					transition:all 0.1s;
+				}
+			}
+		}
+		
+	}
+}
+
+// ------ 共通區header(End) -------
+
+.main_image{
+	z-index:1;
+	position:relative;
+	max-width: 1920px;
+	height:auto;
+	img{
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
+
