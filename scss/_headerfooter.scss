@@ -1,0 +1,134 @@
+// 字體設定
+$fs-m:14px;
+$fs-l:$fs-m*1.4;
+$fs-s:$fs-m*0.8;
+
+// ------ |-> 共通區header(Start) -------s
+.nav{
+	z-index: 3;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+
+	.header{
+		max-width: 1366px;
+		padding: 10px 50px;
+		margin: 0 auto;
+
+		// 呼叫clearfix設定
+		@include clearfix();
+
+		.logo{
+			// 浮動在左邊
+			float: left;
+			a{	
+				background-image: url(../img/UNDElogowhitew.png);
+				display: block;
+				width: 150px;
+				height: 50px;
+				// 隱藏a標籤中的文字訊息
+				text-indent:101%;
+				overflow:hidden;
+				white-space: nowrap;
+			}
+		}
+		.login{
+			// 浮動在右邊
+			float: right;
+			text-decoration: none;
+			color:#fff;
+			border:1px solid #fff;
+			border-radius: 1px;
+			padding: 15px 20px;
+			font-weight: bolder;
+			letter-spacing: 3px;
+			font-size:$fs-s;
+		}
+		.login:hover{
+				background-color: #fff;
+				color:#000;
+				transition:all 0.3s;
+			}
+		.menu{
+			// 浮動在右邊
+			float: right;
+			margin-right: 20px;
+			li{
+				// 水平排列
+				float: left;
+				padding: 15px 20px;
+				a{					
+					text-decoration: none;
+					color:#fff;										
+					font-weight: bolder;
+					letter-spacing: 3px;
+					padding-bottom: 10px;
+					font-size:$fs-s;
+				}
+				a:hover{
+					border-bottom: 3px solid #fff;				
+					transition:all 0.1s;
+				}
+			}
+		}		
+	}
+}
+// ------ 共通區header(End) <-| -------
+
+
+// ------ |-> 共通區footer(Start) -------
+// ------ |-> 關於我們AboutUs(Start) -------
+.footer{
+	max-width: 100%;	
+	margin: 120px auto 0 auto;
+	background-color: #000;
+		.ContactUs_area{
+			max-width: 1366px;
+			margin: 0 auto;
+			opacity: 0.8;
+			padding: 60px 60px 20px 60px;				
+			color:#fff;
+			h2{
+				font-size: $fs-l;
+				font-weight: bolder;
+				line-height: $fs-l*1.8;
+				}
+			h3{
+				margin-bottom: 20px;
+				font-weight: bolder;
+			}
+			p{
+				line-height: 20px;
+				margin-bottom: 20px;
+				line-height: $fs-m*2;
+				letter-spacing: 1px;		
+				span{
+					font-weight: bolder;
+					letter-spacing: 2px;
+					}				
+				}
+			a{
+				letter-spacing: 1px;
+				color:yellow;
+			}
+			.googlemapIcon{
+				margin-left: 10px;
+			}
+			h4{
+				text-align: center;
+				font-size:$fs-s;
+				letter-spacing: 1px;
+			}
+
+		}
+}
+// 回到TOP icon
+.topicon{
+	position:fixed;
+	right: 20px;
+	bottom: -110px;
+	z-index:5;
+}
+// ------ 關於我們AboutUs(End) <-| -------
+// ------ 共通區footer(End) <-| -------

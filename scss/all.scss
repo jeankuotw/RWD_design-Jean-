@@ -1,11 +1,26 @@
 // reset css
+// CSS reset
 @import "_reset.scss";
+// 清除浮動
+@import "_clearfix.scss";
+// 共通頁面(header,footer)
+@import "_headerfooter.scss";
 
+// 字體設定
 $fs-m:14px;
-$fs-l:$fs-m*1.2;
+$fs-l:$fs-m*1.4;
 $fs-s:$fs-m*0.8;
 
+// 各區標題設定
+@mixin titleset{
+		margin-bottom: 30px;
+		letter-spacing: 3px;
+		text-align: center;
+		font-size: $fs-l;
+		font-weight: bolder;
+}
 
+// =============正式內容====================
 
 *{
 	// CSS3語法:讓div的寬度不被padding,border影響
@@ -14,7 +29,7 @@ $fs-s:$fs-m*0.8;
 	-moz-box-sizing:border-box;
 	// 舊Ghrome用
 	-webkit-box-sizing:border-box;
-	font-size:$fs-m	
+	font-size:$fs-m;
 }
 
 body{
@@ -22,96 +37,130 @@ body{
 	background-color: #fff;
 }
 
-// ------ 共通區header(Start) -------
+// ------ |-> 共通區header(Start) -------
 .wrap{
-	max-width: 100%;
+	width: 100%;
 	margin: 0 auto;	
 }
 
-.nav{
-	z-index: 2;
-	// background-color: #fff;
-	// opacity: 50%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	.header{
-		max-width: 1366px;
-		// background-color: yellow;
-		padding: 10px 50px;
-		margin: 0 auto;
 
 
-		// clearfix設定
-		&::after{
-			display:block;
-			clear:both;
-			content:"";
-		}
-		.logo{
-			// 浮動在左邊
-			float: left;
-			width: 150px;
-			height: 50px;
-			background-color: #000;
-		}
-		.login{
-			// 浮動在右邊
-			float: right;
-			text-decoration: none;
-			color:#fff;
-			border:1px solid #fff;
-			border-radius: 1px;
-			// box-shadow: 1px 1px gray;
-			padding: 15px 20px;
-			font-weight: bolder;
-			letter-spacing: 3px;
-			font-size:$fs-s;
-		}
-		.login:hover{
-				background-color: #fff;
-				color:#000;
-				transition:all 0.3s;
-			}
-		.menu{
-			// 浮動在右邊
-			float: right;
-			margin-right: 20px;
-			li{
-				// 水平排列
-				float: left;
-				padding: 15px 20px;
-				a{					
-					text-decoration: none;
-					color:#fff;										
-					font-weight: bolder;
-					letter-spacing: 3px;
-					padding-bottom: 10px;
-					font-size:$fs-s;
-				}
-				a:hover{
-					border-bottom: 3px solid #fff;
-					// box-shadow: 0px 1px gray;					
-					transition:all 0.1s;
-				}
-			}
-		}
-		
-	}
-}
-
-// ------ 共通區header(End) -------
-
+// ------ |-> 主視覺main_image(Start) -------
 .main_image{
-	z-index:1;
 	position:relative;
-	max-width: 1920px;
-	height:auto;
-	img{
+	background-image: url(../img/mainpt00.jpg);
+	// margin-bottom: 120px;
+	.main_image_bg{
+		.img{
+			max-width: 1920px;
+			z-index:1;
+			opacity:0;
+		}
+	}	
+	>img{
 		position: absolute;
 		top: 0;
 		left: 0;
+		z-index:2;
 	}
 }
+// ------ 主視覺main_image(End) <-| -------
+
+// ------ |-> 新聞區News(Start) -------
+#News{
+	max-width: 1366px;
+	margin: 0 auto;
+	padding-top: 120px;
+
+	// 呼叫clearfix設定
+	@include clearfix();
+	
+	h3{
+		// 呼叫@mixin設定
+		@include titleset;
+	}
+	.newslist{
+		li{
+			// 水平排列
+			float:left;
+			width: 31.33333%;
+			margin-left: 1%;
+			margin-right: 1%;
+			img{
+				margin-bottom: 20px;
+			}
+			h2{
+				padding: 0 20px 20px 20px;				
+				>a{
+					// padding: 0 20px 20px 20px;
+					font-size: $fs-l;
+					font-weight: bolder;
+					line-height: $fs-l*1.5;
+					text-decoration: none;
+					color:#000;
+					}
+				}
+			p{
+				padding: 0 20px 5px 20px;
+				text-align:justify;
+				line-height: 20px;
+				letter-spacing: 1px;
+			}
+			>a{
+				float:right;
+				padding-right: 20px;
+				font-size: $fs-m*0.8;
+				color:#000;
+			}
+		}
+	}	
+}
+// ------ 新聞區News(End) <-| -------
+
+// ------ |-> 關於我們AboutUs(Start) -------
+#AboutUs{
+	max-width: 1366px;
+	margin: 0 auto;
+	padding-top: 120px;	
+
+	// 呼叫clearfix設定
+	@include clearfix();
+
+	h3{
+		// 呼叫@mixin設定
+		@include titleset;
+	}
+	.AboutUs_area{
+		// 讓下層對齊用
+		position: relative;
+		margin-left: 3%;
+		margin-right: 3%;			
+
+		img{
+			// 水平排列
+			// float:left;			
+		}
+		p{
+			// 對齊上層(.AboutUs_area)
+			position:absolute;
+			top: 50px;
+			right: 20px;
+			// 水平排列
+			float:right;
+			margin-right: 1%;
+			width:40%;
+			padding: 20px;		
+			background-color: #000;
+			opacity:0.8;
+			color:#fff;
+			text-align:justify;
+			line-height: 24px;
+			font-size: $fs-m;			
+			span{
+				line-height: 50px;
+			}
+		}
+	}
+}
+// ------ 關於我們AboutUs(End) <-| -------
 
