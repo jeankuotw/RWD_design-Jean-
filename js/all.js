@@ -11,10 +11,31 @@ $(function(){
 		// 第一張圖fadeOut,下一張圖fadeIn。end():結束鏈結返回開頭。
 		// appendTo('.main_image'):將.appendTo()前方的內容貼至.main_image前
 		$('.main_image>img:first').fadeOut(3000).next('img').fadeIn(800).end().appendTo('.main_image');}, 5000);
-		// $('.main_image>img:first-child').fadeOut(3000).next('img').fadeIn(800).end().appendTo('.main_image');}, 5000);
+
+// 監測menu的.menulilist click動作
+	$(".menulist").click(function(e){
+		e.preventDefault();
+		// 取得屬性href
+		var target=$(this).attr("href");
+		// 取得href中連結到的id所在的網頁高度
+		var targetPos=$(target).offset().top;
+
+		// 動畫效果:按按鈕後移動到相對id位置
+		$("body,html").animate({scrollTop:targetPos},2000);
+	});
+
+// 監測menu的.hometopicon click動作
+	$(".hometop").click(function(e){
+		e.preventDefault();
+		$("body,html").animate({scrollTop:0},2500);
+	})
 
 
-	
+// 監測.topicon click動作
+	$(".topicon").click(function(e){
+		e.preventDefault();
+		$("body,html").animate({scrollTop:0},2500);
+	})
 
 // 監測捲軸動作
 	 $(window).scroll(function(){
@@ -24,21 +45,28 @@ $(function(){
 	 	// console.log(scrollPos);
 	 	// 取得視窗高度
 	 	var windowHeight=$(window).height();
+	 	// console.log(windowHeight);
 
 	 	// 【topicon動畫功能】
 	 	// 當向下滑超過視窗高度一半時,出現topcon
 	 	if(scrollPos>windowHeight/2){
-	 		$(".topicon").stop(true,false).animate({bottom:20},1000,"easeOutBack");
+	 		$(".topicon").stop(true,false).animate({bottom:20},1500,"easeOutBack");
 	 	}else{ // 其他,捲軸離開畫面
-	 		$(".topicon").stop(true,false).animate({bottom:-110},1000,"easeOutBack");
+	 		$(".topicon").stop(true,false).animate({bottom:-110},1500,"easeOutBack");
 	 	}
 
 	 	// 【nav動畫功能】
 	 	// 當視窗往下滑到一定高度時,nav瀏覽列加上黑底色
-	 	if(scrollPos>windowHeight/1.2 && !showSkill){
+	 	if(scrollPos>windowHeight*0.8 && !showSkill){
 	 		// slideDown動畫只顯示一次(在最上方先宣告var showSkill=false)
 			showSkill=true;
-			$(".nav").hide().css({"background-color":"#000"}).slideDown(1500); 	
+			$(".nav").hide().css({"background-color":"#000"}).slideDown(1000); 	
 	 	}
 	 });
 });
+
+
+
+
+	
+
