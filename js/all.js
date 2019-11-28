@@ -46,6 +46,8 @@ $(function(){
 	 	// 取得視窗高度
 	 	var windowHeight=$(window).height();
 	 	// console.log(windowHeight);
+		// 取得Ｎews區的高度
+		var newsHeight=$("#News").offset().top;
 
 	 	// 【topicon動畫功能】
 	 	// 當向下滑超過視窗高度一半時,出現topcon
@@ -57,7 +59,7 @@ $(function(){
 
 	 	// 【nav動畫功能】
 	 	// 當視窗往下滑到一定高度時,nav瀏覽列加上黑底色
-	 	if(scrollPos>windowHeight*0.8 && !showSkill){
+	 	if(scrollPos>windowHeight*0.8|scrollPos>newsHeight-1 && !showSkill){
 	 		// slideDown動畫只顯示一次(在最上方先宣告var showSkill=false)
 			showSkill=true;
 			$(".nav").hide().css({"background-color":"#000"}).slideDown(1000); 	
