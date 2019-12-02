@@ -96,7 +96,7 @@ body{
 					font-size: $fs-l;
 					font-weight: bolder;
 					line-height: $fs-l*1.5;
-					text-decoration: none;
+					// text-decoration: none;
 					color:#000;
 					}
 				}
@@ -105,12 +105,14 @@ body{
 				text-align:justify;
 				line-height: 20px;
 				letter-spacing: 1px;
-			}
-			>a{
-				float:right;
-				padding-right: 20px;
-				font-size: $fs-m*0.8;
-				color:#000;
+
+				a{
+					float:right;
+					// padding-right: 20px;
+					font-size: $fs-m*0.8;
+					color:brown;
+					text-decoration: underline;
+				}
 			}
 		}
 	}	

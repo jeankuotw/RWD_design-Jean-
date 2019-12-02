@@ -1,0 +1,278 @@
+// CSS reset
+@import "_reset.scss";
+// 清除浮動
+@import "_clearfix.scss";
+// 共通頁面(header,footer)
+@import "_headerfooter.scss";
+
+// 字體設定
+$fs-m:14px;
+$fs-l:$fs-m*1.4;
+$fs-s:$fs-m*0.8;
+
+// product頁字體顏色設定
+$fc-p:brown;
+
+// =============正式內容====================
+
+*{
+	// CSS3語法:讓div的寬度不被padding,border影響
+	box-sizing: border-box;
+	// 舊firefox用
+	-moz-box-sizing:border-box;
+	// 舊Ghrome用
+	-webkit-box-sizing:border-box;
+	font-size:$fs-m;
+}
+
+body{
+	font-family:Arial, Helvetica,"微軟正黑體" ,sans-serif;
+	background-color: #fff;
+}
+
+// ------ |-> 最外層wrap(Start) -------
+.wrap{
+	width: 100%;
+	margin: 0 auto;	
+	
+	// 放入背景圖&圖片滿版
+	// background-image: url("../img/mainpt01.jpg");
+	// background-attachment:fixed;
+	// background-size:cover;
+	// background-position:center center;
+}
+// ------ 最外層wrap(End) <-| -------
+
+// ------ |-> 導覽列nav(Start) -------
+.nav{
+  background-color: #000;
+}
+// ------ 導覽列nav(End) <-| -------
+
+
+// <!-- ===============Product頁面主要內容start=============== -->
+.Product{
+	max-width: 1366px;
+	margin: 0 auto;
+	
+	// 調整此區上下間距(需在此區用padding調整,才不會變成白底)
+	padding-top: 120px;
+	padding-bottom: 80px;
+	// background-color: yellow;
+
+	// 消除該層浮動狀態
+	@include clearfix();
+
+// <!-- ===============類別區=============== -->
+.Product_category{
+	float: left;
+	// 類別區比例
+	width: 25%;
+	margin-left: 3%;
+	margin-right: 3%;
+	// background-color: green;	
+	
+	h4{
+		font-size: $fs-l;
+		font-weight: bolder;
+		line-height: 30px;
+		letter-spacing: 0.5px;	
+	}
+	.select{
+		padding-left: 20px;
+
+		li{
+			border-bottom: 1px solid #000;			
+			a{
+				font-size: $fs-m;
+				font-weight: bolder;
+				letter-spacing: 1px;
+				display:block;
+				padding: 15px 0 15px 5px;
+			}
+			a:hover{
+				background-color: brown;
+				color:#fff;
+				transition:all 0.3s;
+			}
+		}
+	}
+}
+
+// <!-- ===============商品明細區=============== -->
+.Producut_menu{	
+	// 與Product_category水平排列
+	float: left;
+	width: 66%;
+	margin-right: 3%;
+	// background-color: orange;
+	
+	// <!-- ===============搜尋商品=============== -->
+	.Search{				
+		margin-left: 1%;
+
+		// 清除此區浮動狀態
+		@include clearfix();
+
+		input{		
+			float: left;
+			line-height: 24px;
+			border:3px solid #000;			
+			border-radius: 2px;
+			padding:5px 5px;
+			width: 31.33333%;
+			}
+		.search_bt{
+			float: left;
+			margin-left: 5px;
+			
+			background-color: red;
+			
+			border:3px solid #000;			
+			border-radius: 5px;
+			padding: 3px;
+			}
+		}
+
+	// <!-- ===============購物車=============== -->
+	.Shopping_cart{
+		float: right;
+		margin-right: 3%;
+
+		// <a>中置入圖片
+		background-image: url(../img/shopcart24.png);
+		background-repeat: no-repeat;		
+		background-position: 10px 10px;
+
+
+		font-size:$fs-l;
+		font-weight: bolder;
+		text-decoration: none;
+		color:#000;
+
+		border: 3px solid  #000;
+		border-radius: 5px;
+		padding: 15px 20px 10px 40px;
+
+	}
+	.Shopping_cart:hover{
+		background-color: red;
+		color:#fff;
+	}
+
+	// <!-- ===============選擇商品=============== -->
+	.Producut_menu_select{
+		margin-top: 10px;
+		li{
+			// 水平排列
+			float: left;
+			// PC版:一排三個商品
+			width: 31.33333%;
+			margin-left: 1%;
+			margin-right: 1%;
+			margin-bottom: 20px;
+			border:1px solid #000;
+			padding: 10px;
+			text-align: center;
+			box-shadow: 2px 2px gray;
+			a{
+				img{
+					margin-bottom: 10px;
+				}				
+			}
+			h2{
+				margin-bottom: 20px;				
+				span{
+					font-size: $fs-l;
+					line-height: $fs-l*1.3					
+				}
+			}
+			p{
+				font-weight: bolder;
+				margin-bottom: 20px;
+			}
+			.carin{
+				background-color: brown;
+				color:#fff;
+				padding: 5px 20px;
+			}
+			.carin:hover{
+				background-color: red;
+
+			}
+		}
+	}
+	// 與Product_category水平排列
+	  // float: left;
+	  // menu比例
+	  // width: 66%;
+	  // margin-right: 3%;
+	  // 與內容的距離
+	  // padding: 20px;
+	  // background-color: orange;
+
+	// 移除該層浮動狀態
+	// @include clearfix();
+
+	// .search{
+	// 	input{
+	// 		}
+	// 	}
+
+	// .Producut_menu_select{
+	  // li{
+	  	// 水平排列
+	  	// float: left;
+	  	// border: 1px solid  #000;
+		
+		// 設定li大小&與周邊的距離
+	  	// width: 31.33333%;
+	  	// margin: 10px 1%;
+	  	// 每個選單寬度設定在li的padding
+	  	// padding: 20px 10px;
+	  	// letter-spacing: 1px;
+	  	// text-align: center; 
+	  	// a{		
+			// img{
+				// margin-bottom: 10px;
+			// }		
+	  	// }
+	  	// h3{
+	  // 		font-weight: bolder;
+			// margin-bottom: 20px;
+			// line-height: $fs-l;	
+			// color:$fc-p;
+			// span{
+				// font-size: $fs-l;
+				// font-weight: bolder;
+				// color:$fc-p;
+				// }
+
+			// }
+	  	// p{	
+	  		// font-style: $fs-l*1.5;
+	  		// font-weight: bolder;
+	  		// margin-bottom: 5px;
+	  		// color:$fc-p;
+	  	// }
+	  	// .carin{
+	  		// display:block;  	
+	  		// padding: 8px 20px;	
+	  		// font-weight: bolder;
+	  		// background-color: $fc-p;
+	  		// color:#fff;
+	  	// }
+	  	// .carin:hover{  		
+	  		// background-color: red;
+	  	// }
+	  // }
+	// }
+  // }
+}
+}
+
+// !-- ===============Product頁面主要內容end=============== -->
+
+.footer{
+	margin-top: 0;
+}
