@@ -166,7 +166,8 @@ img {
 
 body {
   font-family: Arial, Helvetica,"微軟正黑體" ,sans-serif;
-  background-color: #fff; }
+  background-color: #fff;
+  background-image: url(../img/bg_blue-snow.png); }
 
 .wrap {
   width: 100%;
@@ -186,13 +187,13 @@ body {
     content: ""; }
   .Product .Product_category {
     float: left;
-    width: 25%;
+    width: 20%;
     margin-left: 3%;
     margin-right: 3%; }
     .Product .Product_category h4 {
       font-size: 19.6px;
       font-weight: bolder;
-      line-height: 30px;
+      line-height: 40px;
       letter-spacing: 0.5px; }
     .Product .Product_category .select {
       padding-left: 20px; }
@@ -205,38 +206,38 @@ body {
           display: block;
           padding: 15px 0 15px 5px; }
         .Product .Product_category .select li a:hover {
-          background-color: brown;
+          background-color: #034d8a;
           color: #fff;
           -webkit-transition: all 0.3s;
           -o-transition: all 0.3s;
           transition: all 0.3s; }
   .Product .Producut_menu {
     float: left;
-    width: 66%;
+    width: 71%;
     margin-right: 3%; }
+    .Product .Producut_menu::after {
+      display: block;
+      clear: both;
+      content: ""; }
     .Product .Producut_menu .Search {
+      float: left;
       margin-left: 1%; }
-      .Product .Producut_menu .Search::after {
-        display: block;
-        clear: both;
-        content: ""; }
       .Product .Producut_menu .Search input {
-        float: left;
         line-height: 24px;
         border: 3px solid #000;
-        border-radius: 2px;
-        padding: 5px 5px;
-        width: 31.33333%; }
+        border-radius: 15px;
+        padding: 5px 30px 5px 15px; }
       .Product .Producut_menu .Search .search_bt {
-        float: left;
+        float: right;
         margin-left: 5px;
-        background-color: red;
+        background-color: #cae0ee;
         border: 3px solid #000;
-        border-radius: 5px;
-        padding: 3px; }
+        border-radius: 10px;
+        padding: 3px 5px; }
     .Product .Producut_menu .Shopping_cart {
       float: right;
       margin-right: 3%;
+      background-color: #cae0ee;
       background-image: url(../img/shopcart24.png);
       background-repeat: no-repeat;
       background-position: 10px 10px;
@@ -246,12 +247,19 @@ body {
       color: #000;
       border: 3px solid  #000;
       border-radius: 5px;
-      padding: 15px 20px 10px 40px; }
+      padding: 15px 20px 10px 40px;
+      display: inline-block;
+      -webkit-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      transition: all 0.2s; }
     .Product .Producut_menu .Shopping_cart:hover {
-      background-color: red;
-      color: #fff; }
+      background-color: #034d8a;
+      color: #fff;
+      -webkit-transform: translate(2px, 2px);
+      -ms-transform: translate(2px, 2px);
+      transform: translate(2px, 2px); }
     .Product .Producut_menu .Producut_menu_select {
-      margin-top: 10px; }
+      margin-top: 60px; }
       .Product .Producut_menu .Producut_menu_select li {
         float: left;
         width: 31.33333%;
@@ -259,26 +267,58 @@ body {
         margin-right: 1%;
         margin-bottom: 20px;
         border: 1px solid #000;
-        padding: 10px;
+        border-radius: 2px;
+        padding: 15px 10px;
         text-align: center;
         -webkit-box-shadow: 2px 2px gray;
-        box-shadow: 2px 2px gray; }
+        box-shadow: 2px 2px gray;
+        position: relative; }
         .Product .Producut_menu .Producut_menu_select li a img {
           margin-bottom: 10px; }
+        .Product .Producut_menu .Producut_menu_select li a .hottag {
+          position: absolute;
+          top: 20px;
+          right: 15px;
+          background-color: red;
+          padding: 10px 8px;
+          color: #fff;
+          font-weight: bolder; }
         .Product .Producut_menu .Producut_menu_select li h2 {
           margin-bottom: 20px; }
           .Product .Producut_menu .Producut_menu_select li h2 span {
             font-size: 19.6px;
-            line-height: 25.48px; }
+            line-height: 29.4px; }
         .Product .Producut_menu .Producut_menu_select li p {
-          font-weight: bolder;
-          margin-bottom: 20px; }
+          font-size: 14px;
+          margin-bottom: 20px;
+          letter-spacing: 2px; }
+          .Product .Producut_menu .Producut_menu_select li p span {
+            font-size: 21.56px;
+            font-weight: bolder;
+            letter-spacing: 1px; }
         .Product .Producut_menu .Producut_menu_select li .carin {
+          border-radius: 20px;
           background-color: brown;
+          font-weight: bolder;
           color: #fff;
-          padding: 5px 20px; }
+          padding: 10px 20px;
+          -webkit-transition: all 0.2s;
+          -o-transition: all 0.2s;
+          transition: all 0.2s;
+          display: inline-block; }
         .Product .Producut_menu .Producut_menu_select li .carin:hover {
-          background-color: red; }
+          background-color: #034d8a;
+          color: #fff;
+          -webkit-transform: translate(2px, 2px);
+          -ms-transform: translate(2px, 2px);
+          transform: translate(2px, 2px); }
+      .Product .Producut_menu .Producut_menu_select li:hover {
+        background-color: #cad5f0; }
+  .Product .page {
+    text-align: center; }
+    .Product .page a {
+      color: brown;
+      text-decoration: none; }
 
 .footer {
   margin-top: 0; }
