@@ -38,20 +38,21 @@ body{
 }
 
 // ------ |-> 共通區header(Start) -------
-.wrap{
+.wrap{	
 	width: 100%;
 	margin: 0 auto;	
 }
 
 
-
 // ------ |-> 主視覺main_image(Start) -------
 .main_image{
 	position:relative;
-	background-image: url(../img/mainpt00.jpg);
-	// margin-bottom: 120px;
+
+	// 呼叫clearfix設定
+	// @include clearfix();
+			
 	.main_image_bg{
-		.img{
+		.img{	
 			max-width: 1920px;
 			z-index:1;
 			opacity:0;
@@ -64,13 +65,29 @@ body{
 		z-index:2;
 	}
 }
+
+// // ------ |-> RWD(Start) -------
+// 匯入RWD @mixin設定
+@include ipad{
+	.main_image{
+		.main_image_bg{
+			.img{
+				}
+			}
+	>img{}
+	}
+}
+
+//  ------ RWD (End) <-| -------
 // ------ 主視覺main_image(End) <-| -------
+
+
 
 // ------ |-> 新聞區News(Start) -------
 #News{
 	max-width: 1366px;
 	margin: 0 auto;
-	padding-top: 120px;
+	padding-top: 80px;
 
 	// 呼叫clearfix設定
 	@include clearfix();
@@ -86,6 +103,8 @@ body{
 			width: 31.33333%;
 			margin-left: 1%;
 			margin-right: 1%;
+			// 更新
+			margin-bottom: 20px;
 			img{
 				margin-bottom: 20px;
 			}
@@ -117,13 +136,28 @@ body{
 		}
 	}	
 }
+
+// // ------ |-> RWD(Start) -------
+// 匯入RWD @mixin設定
+
+#News{
+		.newslist{
+			li{
+				@include ipad{width: 48%;}
+				@include mobile{width: 98%;}
+
+			}
+		}
+	}
+//  ------ RWD (End) <-| -------
 // ------ 新聞區News(End) <-| -------
+
 
 // ------ |-> 關於我們AboutUs(Start) -------
 #AboutUs{
 	max-width: 1366px;
 	margin: 0 auto;
-	padding-top: 120px;	
+	padding-top: 80px;	
 
 	// 呼叫clearfix設定
 	@include clearfix();
@@ -138,31 +172,43 @@ body{
 		margin-left: 3%;
 		margin-right: 3%;			
 
-		img{
-			// 水平排列
-			// float:left;			
-		}
+		img{}
 		p{
 			// 對齊上層(.AboutUs_area)
 			position:absolute;
-			top: 50px;
-			right: 20px;
+			top: 10%;
+			right: 5%;
+
 			// 水平排列
 			float:right;
-			margin-right: 1%;
 			width:40%;
-			padding: 20px;		
+			padding: 20px 20px 10px 20px;		
 			background-color: #000;
 			opacity:0.8;
 			color:#fff;
 			text-align:justify;
 			line-height: 24px;
 			font-size: $fs-m;			
+
 			span{
-				line-height: 50px;
+				line-height: 35px;
 			}
 		}
 	}
 }
+
+// // ------ |-> RWD(Start) -------
+// 匯入RWD @mixin設定
+#AboutUs{		
+	.AboutUs_area{
+		p{
+			@include w900{width: 50%;}
+			@include ipad{width: 90%;}
+			@include mobile{}		
+		}
+	}
+}
+
+//  ------ RWD (End) <-| -------
 // ------ 關於我們AboutUs(End) <-| -------
 

@@ -12,6 +12,7 @@ $(function(){
 		// appendTo('.main_image'):將.appendTo()前方的內容貼至.main_image前
 		$('.main_image>img:first').fadeOut(3000).next('img').fadeIn(800).end().appendTo('.main_image');}, 5000);
 
+
 // 監測menu的.menulilist click動作
 	$(".menulist").click(function(e){
 		e.preventDefault();
@@ -36,6 +37,18 @@ $(function(){
 		e.preventDefault();
 		$("body,html").animate({scrollTop:0},2500);
 	})
+
+// 監測hidemenu click動作,會出現直排的menu
+	$(".hidemenu").on('click', function(e){
+		// 取消<a>預設超連結功能
+		e.preventDefault();
+		// 將.nav套上class後,menu即可開合
+		$(".nav").toggleClass('menu-show');
+	})
+
+
+
+
 
 // 監測捲軸動作
 	 $(window).scroll(function(){

@@ -24,7 +24,8 @@ $hover-c:#fff;
 	// 舊firefox用
 	-moz-box-sizing:border-box;
 	// 舊Ghrome用
-	-webkit-box-sizing:border-box;
+	-webkit-box-sizing:border-box;	
+	// 頁面文字大小
 	font-size:$fs-m;
 }
 
@@ -82,7 +83,7 @@ body{
 		li{
 			border-bottom: 1px solid #000;			
 			a{
-				font-size: $fs-m;
+				// font-size: $fs-m;
 				font-weight: bolder;
 				letter-spacing: 1px;
 				display:block;
@@ -203,14 +204,19 @@ body{
 				}			
 			}
 			h2{
-				margin-bottom: 20px;				
+				// margin-bottom: 30px;
+				display:inline-block;	
+				// font-size: $fs-m;
 				span{
 					font-size: $fs-l;
-					line-height: $fs-l*1.5;
+					line-height: $fs-l*1.5;	
+					display:inline-block;
+					// margin-bottom: 30px;				
 				}
 			}
 			p{
-				font-size: $fs-m;
+				margin-top: 20px;
+				// font-size: $fs-m;
 				margin-bottom: 20px;
 				letter-spacing: 2px;
 				span{

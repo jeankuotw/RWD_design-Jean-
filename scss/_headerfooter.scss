@@ -1,3 +1,6 @@
+// 匯入RWD mixin格式
+@import "_grid.scss";
+
 // 字體設定
 $fs-m:14px;
 $fs-l:$fs-m*1.4;
@@ -14,7 +17,7 @@ $fs-s:$fs-m*0.8;
 	.header{
 		max-width: 1366px;
 		padding: 10px 50px;
-		margin: 0 auto;
+		margin: 0 auto;		
 
 		// 呼叫clearfix設定
 		@include clearfix();
@@ -44,11 +47,17 @@ $fs-s:$fs-m*0.8;
 			font-weight: bolder;
 			letter-spacing: 3px;
 			font-size:$fs-s;
+
+			// 按鈕特效(<a>display:inline-block;<a:hover>transform:translateY(2px);)
+			display:inline-block;
+			transition:all 0.2s;
 		}
 		.login:hover{
 				background-color: #fff;
 				color:#000;
 				transition:all 0.3s;
+
+				transform:translate(2px,2px);
 			}
 		.menu{
 			// 浮動在右邊
@@ -71,10 +80,125 @@ $fs-s:$fs-m*0.8;
 					transition:all 0.1s;
 				}
 			}
+		}
+		.hidemenu{
+			// PC ver.先隱藏menu
+			display:none;
 		}		
 	}
 }
+
+
+// ------ |-> RWD(Start) -------
+// 匯入RWD @mixin w900設定
+@include w900{
+		.nav .header {
+			.login{padding: 15px 10px;}
+			.menu {			
+			li{padding:15px 10px;}
+		}
+	}
+}
+
+// ipad
+@include ipad{
+	.nav .header {
+		/*上層:讓下層.menu對齊用*/
+		position: relative;
+		.login{
+			// 先藏起來
+			display:none;
+			// float: right;			
+		}
+		.menu{
+			// menu先隱藏起來：設定max-height&overflow (注意：不能使用display:none;)
+			max-height: 0;
+			overflow:hidden;
+			/*CSS3:指定max-height特效轉場時間*/
+    		transition: max-height 2.5s;
+		    /*下層：對齊上層header。
+	      	設定出現位置在header的下方(=102px)
+	        (重要)並設定left:0,right:0,就可以讓menu左右滿版*/
+		    position: absolute;
+			top: 105px;
+			left: 0;
+			right: 0;
+			margin-right: 0;
+			/*將直式menu蓋在網頁最上層*/
+			z-index:99;
+			li{
+				/*變為直式menu(取消浮動)*/
+				float:none;					
+				background-color:#e9f3fa;
+				border-bottom: 0.5px solid #034d8a;
+				// 取消橫式排版的padding
+				padding: 0;
+				a{	
+					// 設定a寬度跟li一樣
+					display: block;
+					width: 100%;
+					// 行高需高於44px(手指寬度為44px)
+					line-height: 60px;
+
+					text-align: center;
+					color:#034d8a;	
+
+					// 取消橫式排版的padding
+					padding: 0;				
+				}
+				a:hover{
+					border-bottom: none;
+					color:#fff;
+					background-color: #034d8a;
+				}
+			}
+			li:first-child{border-top: 0.5px solid #034d8a;}			
+		}
+		.hidemenu{
+		display:block;
+		float: right;
+		margin-right: 20px;
+		margin-top: 10px;
+		// 按鈕特效(<a>display:inline-block;<a:hover>transform:translateY(2px);)		
+		display: inline-block;
+		transition:all 0.2s;
+		}
+		.hidemenu:hover{			
+			transform:translate(2px,2px);
+		}
+	}	
+}
+
+// mobile
+ @include mobile{
+ 		.nav .header {
+ 			.logo{ 				
+ 				// 取消浮動狀態
+ 				float: none; 				
+ 				a{
+ 					// 調整位置
+ 					margin: 0 auto;					
+ 				}
+ 			}
+ 			.hidemenu{
+ 				// 取消浮動狀態
+ 				float: none;
+ 				// 變為按鈕,才能調整位置
+ 				display:block;
+ 				width: 32px;
+ 				height: 32px;
+ 				margin: 10px auto;				
+ 			}
+ 		}
+ }
+
+/*jQuery點擊後,顯示menu*/
+ .menu-show .header  .menu {
+	max-height: 303px;
+}
+//  ------ RWD (End) <-| -------
 // ------ 共通區header(End) <-| -------
+
 
 
 // ------ |-> 共通區footer(Start) -------

@@ -1,34 +1,38 @@
-@mixin desktop1920{
+@mixin pc1920{
 	@media (max-width: 1920px){
 		@content
 	}
 }
 
-@mixin desktop1366{
+@mixin pc1366{
 	@media (max-width: 1366px){
 		@content
 	}
 }
 
-@mixin desktop1280{
+@mixin pc1280{
 	@media (max-width: 1280px){
 		@content
 	}
 }
 
+
+@mixin w900{
+	@media (max-width: 900px) and (min-width:769px){
+		@content
+	}
+}
+
+//ipad,air
 @mixin ipad{
 	@media (max-width: 768px){
 		@content
 	}
 }
 
-@mixin mobile-m{
-	@media (max-width: 568px){
+//mobile:m-s
+@mixin mobile{
+	@media (max-width: 600px){
 		@content
-	}
-}
-
-@mixin mobile-s{
-	@media (max-width: 360px){
 	}
 }
