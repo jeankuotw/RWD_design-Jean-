@@ -16,7 +16,7 @@
 	}
 }
 
-
+// other
 @mixin w900{
 	@media (max-width: 900px) and (min-width:769px){
 		@content
@@ -30,9 +30,16 @@
 	}
 }
 
-//mobile:m-s
+//mobile:m
 @mixin mobile{
 	@media (max-width: 600px){
+		@content
+	}
+}
+
+//mobile:s
+@mixin mobile-s{
+	@media (max-width: 375px){
 		@content
 	}
 }

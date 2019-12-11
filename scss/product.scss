@@ -4,6 +4,8 @@
 @import "_clearfix.scss";
 // 共通頁面(header,footer)
 @import "_headerfooter.scss";
+//div中的內容水平置中(Horizontal)
+@import "_horizontal.scss";
 
 // 字體設定
 $fs-m:14px;
@@ -62,81 +64,16 @@ body{
 	// 消除該層浮動狀態
 	@include clearfix();
 
-// <!-- ===============類別區=============== -->
-.Product_category{
-	float: left;
-	// 類別區比例
-	width: 20%;
-	margin-left: 3%;
+// <!-- ===============搜尋商品&購物車=============== -->
+.Search_Shop{	
+	max-width: 1366px;
 	margin-right: 3%;
-	// background-color: green;	
-	
-	h4{
-		font-size: $fs-l;
-		font-weight: bolder;
-		line-height: 40px;
-		letter-spacing: 0.5px;	
-	}
-	.select{
-		padding-left: 20px;
-
-		li{
-			border-bottom: 1px solid #000;			
-			a{
-				// font-size: $fs-m;
-				font-weight: bolder;
-				letter-spacing: 1px;
-				display:block;
-				padding: 15px 0 15px 5px;
-			}
-			a:hover{
-				background-color: $hover-bg;
-				color:$hover-c;
-				transition:all 0.3s;
-			}
-		}
-	}
-}
-
-// <!-- ===============商品明細區=============== -->
-.Producut_menu{	
-	// 與Product_category水平排列
-	float: left;
-	width: 71%;
-	margin-right: 3%;
-	// background-color: orange;
-
 	// 清除此區浮動狀態
 	@include clearfix();
 
-	//修改
-	// <!-- ===============搜尋商品=============== -->
-	.Search{	
-		float: left;				
-		margin-left: 1%;
-
-		input{			
-			line-height: 24px;
-			border:3px solid #000;			
-			border-radius: 15px;
-			padding:5px 30px 5px 15px;			
-			}
-		.search_bt{
-			float: right;
-			margin-left: 5px;
-			
-			background-color: #cae0ee;
-			
-			border:3px solid #000;			
-			border-radius: 10px;
-			padding: 3px 5px;
-			}
-		}
-
 	// <!-- ===============購物車=============== -->
-	.Shopping_cart{
+	.Shopping_cart{		
 		float: right;
-		margin-right: 3%;
 		background-color: #cae0ee;
 
 		// <a>中置入圖片
@@ -165,9 +102,76 @@ body{
 		transform:translate(2px,2px);
 	}
 
-	// <!-- ===============選擇商品=============== -->
+	// <!-- ===============搜尋商品=============== -->
+	.Search_form{					
+		float: right;
+		margin-right: 5%;
+		margin-top: 5px;
+		input{			
+			line-height: 24px;
+			border:3px solid #000;			
+			border-radius: 15px;
+			padding:5px 150px 5px 15px;			
+			}
+		// 消除點擊input時預設的藍框
+		input:focus{
+			outline:none;
+			}
+		.search_bt{
+			float: right;
+			margin-left: 5px;
+			
+			background-color: #cae0ee;
+			
+			border:3px solid #000;			
+			border-radius: 10px;
+			padding: 3px 5px;
+			}
+		}
+}
+
+// <!-- ===============類別區=============== -->
+.Product_category{
+	float: left;
+	// 類別區比例
+	width: 20%;
+	margin-left: 3%;
+	margin-right: 3%;
+	// background-color: green;	
+	
+	h4{
+		font-size: $fs-l;
+		font-weight: bolder;
+		line-height: 40px;
+		letter-spacing: 0.5px;	
+	}
+	.select{
+		padding-left: 20px;
+
+		li{
+			border-bottom: 1px solid #000;			
+			a{
+				font-weight: bolder;
+				letter-spacing: 1px;
+				display:block;
+				padding: 15px 5px 15px 5px;
+			}
+			a:hover{
+				background-color: $hover-bg;
+				color:$hover-c;
+				transition:all 0.3s;
+			}
+		}
+	}
+}
+
+// <!-- ===============選擇商品=============== -->
 	.Producut_menu_select{
-		margin-top: 60px;
+		margin-top: 15px;
+		// 與Product_category水平排列
+		float: left;
+		width: 71%;
+		margin-right: 3%;
 
 		// 清除此區浮動狀態
 		@include clearfix();
@@ -175,8 +179,9 @@ body{
 		li{
 			// 水平排列
 			float: left;
-			// PC版:一排三個商品
+			// PC版:一排四個商品
 			width: 23%;
+			height: 320px;
 			margin-left: 1%;
 			margin-right: 1%;
 			margin-bottom: 20px;
@@ -188,6 +193,12 @@ body{
 			background-color: #e9f3fa;			
 			// 讓下層(hottag)對齊用
 			position: relative; 
+				
+			// 更新
+			// 按鈕特效(<a>display:inline-block;<a:hover>transform:translateY(2px);)
+			display:inline-block;
+			transition:all 0.2s;
+
 			a{
 				img{
 					margin-bottom: 10px;					
@@ -203,10 +214,9 @@ body{
 					font-weight: bolder;								
 				}			
 			}
-			h2{
-				// margin-bottom: 30px;
-				display:inline-block;	
-				// font-size: $fs-m;
+			.select_info{
+			h2{				
+				height: 65px;				
 				span{
 					font-size: $fs-l;
 					line-height: $fs-l*1.5;	
@@ -215,8 +225,7 @@ body{
 				}
 			}
 			p{
-				margin-top: 20px;
-				// font-size: $fs-m;
+				margin-top: 10px;				
 				margin-bottom: 20px;
 				letter-spacing: 2px;
 				span{
@@ -225,13 +234,48 @@ body{
 					letter-spacing: 1px;
 				}
 			}
-			.carin{					
+
+			// 更新
+			// 追蹤商品
+			.follow{
+				border-radius: 20px;
+				background-color: gray;
+				font-weight: bolder;
+				color:$hover-c;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				// padding: 10px 20px;
+				transition:all 0.2s;
+
+				width: 30%;
+				margin-left: 5%;
+				margin-right: 1%;
+				
+				float: left;
+
+				// 按鈕特效(<a>display:inline-block;<a:hover>transform:translateY(2px);)
+				 display: inline-block;
+			}
+			.follow:hover{
+				background-color: #000;
+				color:$hover-c;			
+				transform: translate(2px,2px);
+			}
+
+			// 加入購物車
+			.carin{
 				border-radius: 20px;
 				background-color: brown;
 				font-weight: bolder;
 				color:$hover-c;
-				padding: 10px 20px;
+				padding-top: 10px;
+				padding-bottom: 10px;				
 				transition:all 0.2s;
+
+				width: 60%;
+				margin-left: 1%;
+				margin-right: 3%;
+				float: left;
 
 				// 按鈕特效(<a>display:inline-block;<a:hover>transform:translateY(2px);)
 				 display: inline-block;
@@ -242,9 +286,13 @@ body{
 				transform: translate(2px,2px);
 			}
 		}
+	}
 		li:hover{
 			background-color: #cad5f0;
-			// color: #002c8b;			
+			// color: #002c8b;		
+			transform:translate(2px,2px);
+			// 滑鼠變為手指形狀
+			cursor:pointer;	
 		}
 	}
   }
@@ -253,10 +301,165 @@ body{
   	a{
   		color:brown;
   		text-decoration: none;
+  	}  
+}
 
-  	}
-  }
-} 
+// // ------ |-> RWD(Start) -------
+// 匯入RWD @mixin設定
+// =====w900=====
+@include w900{
+.Product{	
+	.Producut_menu_select{		
+			li{	
+				// w900(寬900px以下):一排三個商品				
+				width:31.33333%;							
+			}			
+		}		
+	}
+}
+// =====w900 end=====
+
+
+// =====ipad=====
+@include ipad{
+	.Product{	
+		padding: 120px 3% 80px 3%;	
+	// <!-- ===============搜尋商品、購物車=============== -->	
+	.Search_Shop{
+		// <!-- ===============購物車=============== -->
+		.Shopping_cart{}
+		.Search_form{			
+				margin-right: 10px;
+				margin-bottom: 10px;
+				float: left;
+
+				// 清除此區浮動狀態
+				@include clearfix();	
+			
+			input{}
+			.search_bt{}
+	  	}
+	}	
+	// <!-- ===============類別區=============== -->
+	.Product_category{		
+			float: none;
+			width: 100%;
+			margin: 0;
+
+			h4{
+				display: none;
+				}
+			.select{
+				padding-left: 0;
+				li{				
+					// 變為水平排列
+					float: left;
+					margin-right: 2%;
+					border-bottom: none;				
+			}
+		}		
+	}
+
+	.Producut_menu_select{		
+			width: 100%;
+			margin-right: 0;
+			float: none;	
+			margin-bottom: 10px;					
+			li{
+				width: 48%;
+				height: auto;
+
+
+				}			
+			}
+		
+	}
+}
+// =====ipad end=====
+
+//===== mobile=====
+@include mobile{
+	.Product{
+		padding-top: 135px;
+
+		// 清除此區浮動狀態
+		@include clearfix();	
+	// <!-- ===============搜尋商品、購物車=============== -->	
+	.Search_Shop{		
+		// <!-- ===============購物車=============== -->
+		.Shopping_cart{			
+				float: right;
+				margin-bottom: 10px;
+		
+		}
+		.Search_form{			
+				float: left;
+				max-width: 100%;
+				margin-right: 0;				
+
+			input{
+				padding-right: 35px;				
+			}
+			.search_bt{
+				float: right;								
+			}
+	  	}
+	}	
+	// <!-- ===============類別區=============== -->
+	.Product_category{
+				// 清除此區浮動狀態
+				@include clearfix();
+					margin-top: 5px;
+					margin-bottom: 15px;
+				.select{
+
+					li{
+						// padding: 0;										
+						a{
+							padding-top: 5px;
+							padding-bottom: 5px;
+						}
+					}
+			}	
+	}
+
+	.Producut_menu_select{
+		margin-top: 0;
+			li{	
+				// mobile:一排一個商品
+				width: 98%;
+				height: auto;
+				a{				
+					float: left;
+					width: 50%;				  
+
+					img{}
+					.hottag{						
+						width: 48%;
+						left: 10px;
+						top: 10px;							
+					}
+				}
+
+					.select_info{
+						width: 48%;
+						margin-left: 2%;
+    					float: right;
+						h2{}
+				
+						.follow{
+						}
+						.carin{				
+						}
+					}				
+			}			
+		}
+
+	}
+}
+// ====mobile end=====
+
+//  ------ RWD (End) <-| -------
 
 // !-- ===============Product頁面主要內容end=============== -->
 

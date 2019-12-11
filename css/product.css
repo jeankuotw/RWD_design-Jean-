@@ -72,6 +72,52 @@ img {
       display: block;
       clear: both;
       content: ""; }
+    .nav .header .menu_login {
+      float: right; }
+      .nav .header .menu_login .login {
+        float: right;
+        text-decoration: none;
+        color: #fff;
+        border: 1.5px solid #fff;
+        border-radius: 2px;
+        padding: 15px 20px;
+        opacity: 0.75;
+        font-weight: bolder;
+        letter-spacing: 3px;
+        font-size: 11.2px;
+        display: inline-block;
+        -webkit-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s; }
+      .nav .header .menu_login .login:hover {
+        background-color: #fff;
+        color: #000;
+        -webkit-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+        -webkit-transform: translate(2px, 2px);
+        -ms-transform: translate(2px, 2px);
+        transform: translate(2px, 2px); }
+      .nav .header .menu_login .menu {
+        float: right;
+        margin-right: 20px; }
+        .nav .header .menu_login .menu li {
+          float: left;
+          padding: 15px 20px; }
+          .nav .header .menu_login .menu li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bolder;
+            letter-spacing: 3px;
+            padding-bottom: 10px;
+            font-size: 11.2px; }
+          .nav .header .menu_login .menu li a:hover {
+            border-bottom: 3px solid #fff;
+            -webkit-transition: all 0.1s;
+            -o-transition: all 0.1s;
+            transition: all 0.1s; }
+      .nav .header .menu_login .hamburgermenu {
+        display: none; }
     .nav .header .logo {
       float: left; }
       .nav .header .logo a {
@@ -82,126 +128,101 @@ img {
         text-indent: 101%;
         overflow: hidden;
         white-space: nowrap; }
-    .nav .header .login {
-      float: right;
-      text-decoration: none;
-      color: #fff;
-      border: 1px solid #fff;
-      border-radius: 1px;
-      padding: 15px 20px;
-      font-weight: bolder;
-      letter-spacing: 3px;
-      font-size: 11.2px;
-      display: inline-block;
-      -webkit-transition: all 0.2s;
-      -o-transition: all 0.2s;
-      transition: all 0.2s; }
-    .nav .header .login:hover {
-      background-color: #fff;
-      color: #000;
-      -webkit-transition: all 0.3s;
-      -o-transition: all 0.3s;
-      transition: all 0.3s;
-      -webkit-transform: translate(2px, 2px);
-      -ms-transform: translate(2px, 2px);
-      transform: translate(2px, 2px); }
-    .nav .header .menu {
-      float: right;
-      margin-right: 20px; }
-      .nav .header .menu li {
-        float: left;
-        padding: 15px 20px; }
-        .nav .header .menu li a {
-          text-decoration: none;
-          color: #fff;
-          font-weight: bolder;
-          letter-spacing: 3px;
-          padding-bottom: 10px;
-          font-size: 11.2px; }
-        .nav .header .menu li a:hover {
-          border-bottom: 3px solid #fff;
-          -webkit-transition: all 0.1s;
-          -o-transition: all 0.1s;
-          transition: all 0.1s; }
-    .nav .header .hidemenu {
-      display: none; }
 
 @media (max-width: 900px) and (min-width: 769px) {
-  .nav .header .login {
+  .nav .header .menu_login .login {
     padding: 15px 10px; }
-  .nav .header .menu li {
+  .nav .header .menu_login .menu li {
     padding: 15px 10px; } }
 
 @media (max-width: 768px) {
   .nav .header {
+    padding: 10px 10px;
     /*上層:讓下層.menu對齊用*/
     position: relative; }
-    .nav .header .login {
-      display: none; }
-    .nav .header .menu {
-      max-height: 0;
-      overflow: hidden;
-      /*CSS3:指定max-height特效轉場時間*/
-      -webkit-transition: max-height 2.5s;
-      -o-transition: max-height 2.5s;
-      transition: max-height 2.5s;
-      /*下層：對齊上層header。
-	      	設定出現位置在header的下方(=102px)
-	        (重要)並設定left:0,right:0,就可以讓menu左右滿版*/
-      position: absolute;
-      top: 105px;
-      left: 0;
-      right: 0;
-      margin-right: 0;
-      /*將直式menu蓋在網頁最上層*/
-      z-index: 99; }
-      .nav .header .menu li {
-        /*變為直式menu(取消浮動)*/
-        float: none;
-        background-color: #e9f3fa;
-        border-bottom: 0.5px solid #034d8a;
-        padding: 0; }
-        .nav .header .menu li a {
-          display: block;
-          width: 100%;
-          line-height: 60px;
-          text-align: center;
-          color: #034d8a;
+    .nav .header .menu_login {
+      margin-bottom: 10px; }
+      .nav .header .menu_login .login {
+        padding: 10px 20px;
+        margin-top: 8px;
+        float: right;
+        margin-right: 10px; }
+      .nav .header .menu_login .menu {
+        max-height: 0;
+        overflow: hidden;
+        /*CSS3:指定max-height特效轉場時間*/
+        -webkit-transition: max-height 2.5s;
+        -o-transition: max-height 2.5s;
+        transition: max-height 2.5s;
+        /*下層：對齊上層header。
+		      	設定出現位置在menu_login的下方大於54px)
+		        (重要)並設定left:0,right:0,就可以讓menu左右滿版*/
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        margin-right: 0;
+        /*將直式menu蓋在網頁最上層*/
+        z-index: 99; }
+        .nav .header .menu_login .menu li {
+          /*變為直式menu(取消浮動)*/
+          float: none;
+          background-color: #fff;
+          border-bottom: 0.5px solid #034d8a;
           padding: 0; }
-        .nav .header .menu li a:hover {
-          border-bottom: none;
-          color: #fff;
-          background-color: #034d8a; }
-      .nav .header .menu li:first-child {
-        border-top: 0.5px solid #034d8a; }
-    .nav .header .hidemenu {
-      display: block;
-      float: right;
-      margin-right: 20px;
-      margin-top: 10px;
-      display: inline-block;
-      -webkit-transition: all 0.2s;
-      -o-transition: all 0.2s;
-      transition: all 0.2s; }
-    .nav .header .hidemenu:hover {
-      -webkit-transform: translate(2px, 2px);
-      -ms-transform: translate(2px, 2px);
-      transform: translate(2px, 2px); } }
+          .nav .header .menu_login .menu li a {
+            display: block;
+            width: 100%;
+            line-height: 60px;
+            text-align: center;
+            color: #034d8a;
+            padding: 0; }
+          .nav .header .menu_login .menu li a:hover {
+            border-bottom: none;
+            color: #fff;
+            background-color: #034d8a; }
+        .nav .header .menu_login .menu li:first-child {
+          border-top: 0.5px solid #034d8a; }
+      .nav .header .menu_login .hamburgermenu {
+        display: block;
+        float: right;
+        margin-right: 10px;
+        margin-top: 10px;
+        display: inline-block;
+        -webkit-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s; }
+      .nav .header .menu_login .hidemenu:hover {
+        -webkit-transform: translate(2px, 2px);
+        -ms-transform: translate(2px, 2px);
+        transform: translate(2px, 2px); } }
 
 @media (max-width: 600px) {
-  .nav .header .logo {
+  .nav .header .menu_login {
     float: none; }
-    .nav .header .logo a {
-      margin: 0 auto; }
-  .nav .header .hidemenu {
+    .nav .header .menu_login::after {
+      display: block;
+      clear: both;
+      content: ""; }
+    .nav .header .menu_login .login {
+      float: right; }
+    .nav .header .menu_login .hamburgermenu {
+      float: right;
+      margin-right: 0; }
+  .nav .header .logo {
     float: none;
-    display: block;
-    width: 32px;
-    height: 32px;
-    margin: 10px auto; } }
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; } }
 
 /*jQuery點擊後,顯示menu*/
-.menu-show .header .menu {
+.menu-show .header .menu_login .menu {
   max-height: 303px; }
 
 .footer {
@@ -272,6 +293,54 @@ body {
     display: block;
     clear: both;
     content: ""; }
+  .Product .Search_Shop {
+    max-width: 1366px;
+    margin-right: 3%; }
+    .Product .Search_Shop::after {
+      display: block;
+      clear: both;
+      content: ""; }
+    .Product .Search_Shop .Shopping_cart {
+      float: right;
+      background-color: #cae0ee;
+      background-image: url(../img/shopcart24.png);
+      background-repeat: no-repeat;
+      background-position: 10px 10px;
+      font-size: 19.6px;
+      font-weight: bolder;
+      text-decoration: none;
+      color: #000;
+      border: 3px solid  #000;
+      border-radius: 5px;
+      padding: 15px 20px 10px 40px;
+      display: inline-block;
+      -webkit-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      transition: all 0.2s; }
+    .Product .Search_Shop .Shopping_cart:hover {
+      background-color: #034d8a;
+      color: #fff;
+      -webkit-transform: translate(2px, 2px);
+      -ms-transform: translate(2px, 2px);
+      transform: translate(2px, 2px); }
+    .Product .Search_Shop .Search_form {
+      float: right;
+      margin-right: 5%;
+      margin-top: 5px; }
+      .Product .Search_Shop .Search_form input {
+        line-height: 24px;
+        border: 3px solid #000;
+        border-radius: 15px;
+        padding: 5px 150px 5px 15px; }
+      .Product .Search_Shop .Search_form input:focus {
+        outline: none; }
+      .Product .Search_Shop .Search_form .search_bt {
+        float: right;
+        margin-left: 5px;
+        background-color: #cae0ee;
+        border: 3px solid #000;
+        border-radius: 10px;
+        padding: 3px 5px; }
   .Product .Product_category {
     float: left;
     width: 20%;
@@ -290,127 +359,200 @@ body {
           font-weight: bolder;
           letter-spacing: 1px;
           display: block;
-          padding: 15px 0 15px 5px; }
+          padding: 15px 5px 15px 5px; }
         .Product .Product_category .select li a:hover {
           background-color: #034d8a;
           color: #fff;
           -webkit-transition: all 0.3s;
           -o-transition: all 0.3s;
           transition: all 0.3s; }
-  .Product .Producut_menu {
+  .Product .Producut_menu_select {
+    margin-top: 15px;
     float: left;
     width: 71%;
     margin-right: 3%; }
-    .Product .Producut_menu::after {
+    .Product .Producut_menu_select::after {
       display: block;
       clear: both;
       content: ""; }
-    .Product .Producut_menu .Search {
+    .Product .Producut_menu_select li {
       float: left;
-      margin-left: 1%; }
-      .Product .Producut_menu .Search input {
-        line-height: 24px;
-        border: 3px solid #000;
-        border-radius: 15px;
-        padding: 5px 30px 5px 15px; }
-      .Product .Producut_menu .Search .search_bt {
-        float: right;
-        margin-left: 5px;
-        background-color: #cae0ee;
-        border: 3px solid #000;
-        border-radius: 10px;
-        padding: 3px 5px; }
-    .Product .Producut_menu .Shopping_cart {
-      float: right;
-      margin-right: 3%;
-      background-color: #cae0ee;
-      background-image: url(../img/shopcart24.png);
-      background-repeat: no-repeat;
-      background-position: 10px 10px;
-      font-size: 19.6px;
-      font-weight: bolder;
-      text-decoration: none;
-      color: #000;
-      border: 3px solid  #000;
-      border-radius: 5px;
-      padding: 15px 20px 10px 40px;
+      width: 23%;
+      height: 320px;
+      margin-left: 1%;
+      margin-right: 1%;
+      margin-bottom: 20px;
+      border: 1px solid #000;
+      border-radius: 10px;
+      padding: 15px 10px;
+      text-align: center;
+      -webkit-box-shadow: 2px 2px gray;
+      box-shadow: 2px 2px gray;
+      background-color: #e9f3fa;
+      position: relative;
       display: inline-block;
       -webkit-transition: all 0.2s;
       -o-transition: all 0.2s;
       transition: all 0.2s; }
-    .Product .Producut_menu .Shopping_cart:hover {
-      background-color: #034d8a;
-      color: #fff;
+      .Product .Producut_menu_select li a img {
+        margin-bottom: 10px; }
+      .Product .Producut_menu_select li a .hottag {
+        position: absolute;
+        top: 20px;
+        right: 15px;
+        background-color: red;
+        padding: 10px 8px;
+        color: #fff;
+        font-weight: bolder; }
+      .Product .Producut_menu_select li .select_info h2 {
+        height: 65px; }
+        .Product .Producut_menu_select li .select_info h2 span {
+          font-size: 19.6px;
+          line-height: 29.4px;
+          display: inline-block; }
+      .Product .Producut_menu_select li .select_info p {
+        margin-top: 10px;
+        margin-bottom: 20px;
+        letter-spacing: 2px; }
+        .Product .Producut_menu_select li .select_info p span {
+          font-size: 21.56px;
+          font-weight: bolder;
+          letter-spacing: 1px; }
+      .Product .Producut_menu_select li .select_info .follow {
+        border-radius: 20px;
+        background-color: gray;
+        font-weight: bolder;
+        color: #fff;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        -webkit-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s;
+        width: 30%;
+        margin-left: 5%;
+        margin-right: 1%;
+        float: left;
+        display: inline-block; }
+      .Product .Producut_menu_select li .select_info .follow:hover {
+        background-color: #000;
+        color: #fff;
+        -webkit-transform: translate(2px, 2px);
+        -ms-transform: translate(2px, 2px);
+        transform: translate(2px, 2px); }
+      .Product .Producut_menu_select li .select_info .carin {
+        border-radius: 20px;
+        background-color: brown;
+        font-weight: bolder;
+        color: #fff;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        -webkit-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s;
+        width: 60%;
+        margin-left: 1%;
+        margin-right: 3%;
+        float: left;
+        display: inline-block; }
+      .Product .Producut_menu_select li .select_info .carin:hover {
+        background-color: #034d8a;
+        color: #fff;
+        -webkit-transform: translate(2px, 2px);
+        -ms-transform: translate(2px, 2px);
+        transform: translate(2px, 2px); }
+    .Product .Producut_menu_select li:hover {
+      background-color: #cad5f0;
       -webkit-transform: translate(2px, 2px);
       -ms-transform: translate(2px, 2px);
-      transform: translate(2px, 2px); }
-    .Product .Producut_menu .Producut_menu_select {
-      margin-top: 60px; }
-      .Product .Producut_menu .Producut_menu_select::after {
+      transform: translate(2px, 2px);
+      cursor: pointer; }
+
+.page {
+  text-align: center; }
+  .page a {
+    color: brown;
+    text-decoration: none; }
+
+@media (max-width: 900px) and (min-width: 769px) {
+  .Product .Producut_menu_select li {
+    width: 31.33333%; } }
+
+@media (max-width: 768px) {
+  .Product {
+    padding: 120px 3% 80px 3%; }
+    .Product .Search_Shop .Search_form {
+      margin-right: 10px;
+      margin-bottom: 10px;
+      float: left; }
+      .Product .Search_Shop .Search_form::after {
         display: block;
         clear: both;
         content: ""; }
-      .Product .Producut_menu .Producut_menu_select li {
-        float: left;
-        width: 23%;
-        margin-left: 1%;
-        margin-right: 1%;
-        margin-bottom: 20px;
-        border: 1px solid #000;
-        border-radius: 10px;
-        padding: 15px 10px;
-        text-align: center;
-        -webkit-box-shadow: 2px 2px gray;
-        box-shadow: 2px 2px gray;
-        background-color: #e9f3fa;
-        position: relative; }
-        .Product .Producut_menu .Producut_menu_select li a img {
-          margin-bottom: 10px; }
-        .Product .Producut_menu .Producut_menu_select li a .hottag {
-          position: absolute;
-          top: 20px;
-          right: 15px;
-          background-color: red;
-          padding: 10px 8px;
-          color: #fff;
-          font-weight: bolder; }
-        .Product .Producut_menu .Producut_menu_select li h2 {
-          display: inline-block; }
-          .Product .Producut_menu .Producut_menu_select li h2 span {
-            font-size: 19.6px;
-            line-height: 29.4px;
-            display: inline-block; }
-        .Product .Producut_menu .Producut_menu_select li p {
-          margin-top: 20px;
-          margin-bottom: 20px;
-          letter-spacing: 2px; }
-          .Product .Producut_menu .Producut_menu_select li p span {
-            font-size: 21.56px;
-            font-weight: bolder;
-            letter-spacing: 1px; }
-        .Product .Producut_menu .Producut_menu_select li .carin {
-          border-radius: 20px;
-          background-color: brown;
-          font-weight: bolder;
-          color: #fff;
-          padding: 10px 20px;
-          -webkit-transition: all 0.2s;
-          -o-transition: all 0.2s;
-          transition: all 0.2s;
-          display: inline-block; }
-        .Product .Producut_menu .Producut_menu_select li .carin:hover {
-          background-color: #034d8a;
-          color: #fff;
-          -webkit-transform: translate(2px, 2px);
-          -ms-transform: translate(2px, 2px);
-          transform: translate(2px, 2px); }
-      .Product .Producut_menu .Producut_menu_select li:hover {
-        background-color: #cad5f0; }
-  .Product .page {
-    text-align: center; }
-    .Product .page a {
-      color: brown;
-      text-decoration: none; }
+    .Product .Product_category {
+      float: none;
+      width: 100%;
+      margin: 0; }
+      .Product .Product_category h4 {
+        display: none; }
+      .Product .Product_category .select {
+        padding-left: 0; }
+        .Product .Product_category .select li {
+          float: left;
+          margin-right: 2%;
+          border-bottom: none; }
+    .Product .Producut_menu_select {
+      width: 100%;
+      margin-right: 0;
+      float: none;
+      margin-bottom: 10px; }
+      .Product .Producut_menu_select li {
+        width: 48%;
+        height: auto; } }
+
+@media (max-width: 600px) {
+  .Product {
+    padding-top: 135px; }
+    .Product::after {
+      display: block;
+      clear: both;
+      content: ""; }
+    .Product .Search_Shop .Shopping_cart {
+      float: right;
+      margin-bottom: 10px; }
+    .Product .Search_Shop .Search_form {
+      float: left;
+      max-width: 100%;
+      margin-right: 0; }
+      .Product .Search_Shop .Search_form input {
+        padding-right: 35px; }
+      .Product .Search_Shop .Search_form .search_bt {
+        float: right; }
+    .Product .Product_category {
+      margin-top: 5px;
+      margin-bottom: 15px; }
+      .Product .Product_category::after {
+        display: block;
+        clear: both;
+        content: ""; }
+      .Product .Product_category .select li a {
+        padding-top: 5px;
+        padding-bottom: 5px; }
+    .Product .Producut_menu_select {
+      margin-top: 0; }
+      .Product .Producut_menu_select li {
+        width: 98%;
+        height: auto; }
+        .Product .Producut_menu_select li a {
+          float: left;
+          width: 50%; }
+          .Product .Producut_menu_select li a .hottag {
+            width: 48%;
+            left: 10px;
+            top: 10px; }
+        .Product .Producut_menu_select li .select_info {
+          width: 48%;
+          margin-left: 2%;
+          float: right; } }
 
 .footer {
   margin-top: 0; }

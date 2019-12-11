@@ -1,0 +1,6 @@
+//內容水平置中(Horizontal)
+@mixin horizontal{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

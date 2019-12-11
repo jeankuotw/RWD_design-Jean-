@@ -72,6 +72,52 @@ img {
       display: block;
       clear: both;
       content: ""; }
+    .nav .header .menu_login {
+      float: right; }
+      .nav .header .menu_login .login {
+        float: right;
+        text-decoration: none;
+        color: #fff;
+        border: 1.5px solid #fff;
+        border-radius: 2px;
+        padding: 15px 20px;
+        opacity: 0.75;
+        font-weight: bolder;
+        letter-spacing: 3px;
+        font-size: 11.2px;
+        display: inline-block;
+        -webkit-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s; }
+      .nav .header .menu_login .login:hover {
+        background-color: #fff;
+        color: #000;
+        -webkit-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+        -webkit-transform: translate(2px, 2px);
+        -ms-transform: translate(2px, 2px);
+        transform: translate(2px, 2px); }
+      .nav .header .menu_login .menu {
+        float: right;
+        margin-right: 20px; }
+        .nav .header .menu_login .menu li {
+          float: left;
+          padding: 15px 20px; }
+          .nav .header .menu_login .menu li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bolder;
+            letter-spacing: 3px;
+            padding-bottom: 10px;
+            font-size: 11.2px; }
+          .nav .header .menu_login .menu li a:hover {
+            border-bottom: 3px solid #fff;
+            -webkit-transition: all 0.1s;
+            -o-transition: all 0.1s;
+            transition: all 0.1s; }
+      .nav .header .menu_login .hamburgermenu {
+        display: none; }
     .nav .header .logo {
       float: left; }
       .nav .header .logo a {
@@ -82,126 +128,101 @@ img {
         text-indent: 101%;
         overflow: hidden;
         white-space: nowrap; }
-    .nav .header .login {
-      float: right;
-      text-decoration: none;
-      color: #fff;
-      border: 1px solid #fff;
-      border-radius: 1px;
-      padding: 15px 20px;
-      font-weight: bolder;
-      letter-spacing: 3px;
-      font-size: 11.2px;
-      display: inline-block;
-      -webkit-transition: all 0.2s;
-      -o-transition: all 0.2s;
-      transition: all 0.2s; }
-    .nav .header .login:hover {
-      background-color: #fff;
-      color: #000;
-      -webkit-transition: all 0.3s;
-      -o-transition: all 0.3s;
-      transition: all 0.3s;
-      -webkit-transform: translate(2px, 2px);
-      -ms-transform: translate(2px, 2px);
-      transform: translate(2px, 2px); }
-    .nav .header .menu {
-      float: right;
-      margin-right: 20px; }
-      .nav .header .menu li {
-        float: left;
-        padding: 15px 20px; }
-        .nav .header .menu li a {
-          text-decoration: none;
-          color: #fff;
-          font-weight: bolder;
-          letter-spacing: 3px;
-          padding-bottom: 10px;
-          font-size: 11.2px; }
-        .nav .header .menu li a:hover {
-          border-bottom: 3px solid #fff;
-          -webkit-transition: all 0.1s;
-          -o-transition: all 0.1s;
-          transition: all 0.1s; }
-    .nav .header .hidemenu {
-      display: none; }
 
 @media (max-width: 900px) and (min-width: 769px) {
-  .nav .header .login {
+  .nav .header .menu_login .login {
     padding: 15px 10px; }
-  .nav .header .menu li {
+  .nav .header .menu_login .menu li {
     padding: 15px 10px; } }
 
 @media (max-width: 768px) {
   .nav .header {
+    padding: 10px 10px;
     /*上層:讓下層.menu對齊用*/
     position: relative; }
-    .nav .header .login {
-      display: none; }
-    .nav .header .menu {
-      max-height: 0;
-      overflow: hidden;
-      /*CSS3:指定max-height特效轉場時間*/
-      -webkit-transition: max-height 2.5s;
-      -o-transition: max-height 2.5s;
-      transition: max-height 2.5s;
-      /*下層：對齊上層header。
-	      	設定出現位置在header的下方(=102px)
-	        (重要)並設定left:0,right:0,就可以讓menu左右滿版*/
-      position: absolute;
-      top: 105px;
-      left: 0;
-      right: 0;
-      margin-right: 0;
-      /*將直式menu蓋在網頁最上層*/
-      z-index: 99; }
-      .nav .header .menu li {
-        /*變為直式menu(取消浮動)*/
-        float: none;
-        background-color: #e9f3fa;
-        border-bottom: 0.5px solid #034d8a;
-        padding: 0; }
-        .nav .header .menu li a {
-          display: block;
-          width: 100%;
-          line-height: 60px;
-          text-align: center;
-          color: #034d8a;
+    .nav .header .menu_login {
+      margin-bottom: 10px; }
+      .nav .header .menu_login .login {
+        padding: 10px 20px;
+        margin-top: 8px;
+        float: right;
+        margin-right: 10px; }
+      .nav .header .menu_login .menu {
+        max-height: 0;
+        overflow: hidden;
+        /*CSS3:指定max-height特效轉場時間*/
+        -webkit-transition: max-height 2.5s;
+        -o-transition: max-height 2.5s;
+        transition: max-height 2.5s;
+        /*下層：對齊上層header。
+		      	設定出現位置在menu_login的下方大於54px)
+		        (重要)並設定left:0,right:0,就可以讓menu左右滿版*/
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        margin-right: 0;
+        /*將直式menu蓋在網頁最上層*/
+        z-index: 99; }
+        .nav .header .menu_login .menu li {
+          /*變為直式menu(取消浮動)*/
+          float: none;
+          background-color: #fff;
+          border-bottom: 0.5px solid #034d8a;
           padding: 0; }
-        .nav .header .menu li a:hover {
-          border-bottom: none;
-          color: #fff;
-          background-color: #034d8a; }
-      .nav .header .menu li:first-child {
-        border-top: 0.5px solid #034d8a; }
-    .nav .header .hidemenu {
-      display: block;
-      float: right;
-      margin-right: 20px;
-      margin-top: 10px;
-      display: inline-block;
-      -webkit-transition: all 0.2s;
-      -o-transition: all 0.2s;
-      transition: all 0.2s; }
-    .nav .header .hidemenu:hover {
-      -webkit-transform: translate(2px, 2px);
-      -ms-transform: translate(2px, 2px);
-      transform: translate(2px, 2px); } }
+          .nav .header .menu_login .menu li a {
+            display: block;
+            width: 100%;
+            line-height: 60px;
+            text-align: center;
+            color: #034d8a;
+            padding: 0; }
+          .nav .header .menu_login .menu li a:hover {
+            border-bottom: none;
+            color: #fff;
+            background-color: #034d8a; }
+        .nav .header .menu_login .menu li:first-child {
+          border-top: 0.5px solid #034d8a; }
+      .nav .header .menu_login .hamburgermenu {
+        display: block;
+        float: right;
+        margin-right: 10px;
+        margin-top: 10px;
+        display: inline-block;
+        -webkit-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        transition: all 0.2s; }
+      .nav .header .menu_login .hidemenu:hover {
+        -webkit-transform: translate(2px, 2px);
+        -ms-transform: translate(2px, 2px);
+        transform: translate(2px, 2px); } }
 
 @media (max-width: 600px) {
-  .nav .header .logo {
+  .nav .header .menu_login {
     float: none; }
-    .nav .header .logo a {
-      margin: 0 auto; }
-  .nav .header .hidemenu {
+    .nav .header .menu_login::after {
+      display: block;
+      clear: both;
+      content: ""; }
+    .nav .header .menu_login .login {
+      float: right; }
+    .nav .header .menu_login .hamburgermenu {
+      float: right;
+      margin-right: 0; }
+  .nav .header .logo {
     float: none;
-    display: block;
-    width: 32px;
-    height: 32px;
-    margin: 10px auto; } }
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; } }
 
 /*jQuery點擊後,顯示menu*/
-.menu-show .header .menu {
+.menu-show .header .menu_login .menu {
   max-height: 303px; }
 
 .footer {

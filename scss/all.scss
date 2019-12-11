@@ -52,8 +52,9 @@ body{
 	// @include clearfix();
 			
 	.main_image_bg{
+		max-width: 1920px;
 		.img{	
-			max-width: 1920px;
+			// max-width: 1920px;
 			z-index:1;
 			opacity:0;
 		}
@@ -63,22 +64,27 @@ body{
 		top: 0;
 		left: 0;
 		z-index:2;
+		// max-width: 0;
+		// height: 0;
 	}
 }
 
 // // ------ |-> RWD(Start) -------
 // 匯入RWD @mixin設定
-@include ipad{
+// 手機板主視覺圖片高度固定
+@include mobile{
 	.main_image{
 		.main_image_bg{
-			.img{
-				}
+			max-width: 100%;
+			.img{}
 			}
-	>img{}
+	>img{
+		max-width: 758px;
+		height: 375px;}
 	}
 }
-
 //  ------ RWD (End) <-| -------
+
 // ------ 主視覺main_image(End) <-| -------
 
 
@@ -139,16 +145,34 @@ body{
 
 // // ------ |-> RWD(Start) -------
 // 匯入RWD @mixin設定
-
-#News{
+@include ipad{
+	#News{
 		.newslist{
 			li{
-				@include ipad{width: 48%;}
-				@include mobile{width: 98%;}
-
+				width: 48%;
 			}
 		}
 	}
+}
+@include mobile{
+	#News{
+		padding-top: 250px;
+		.newslist{
+			li{
+				width: 98%;				
+			}
+		}
+	}
+}
+// #News{
+// 		.newslist{
+// 			li{
+// 				@include ipad{width: 48%;}
+// 				@include mobile{width: 98%;}
+
+// 			}
+// 		}
+// 	}
 //  ------ RWD (End) <-| -------
 // ------ 新聞區News(End) <-| -------
 
