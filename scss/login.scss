@@ -216,6 +216,93 @@ body{
   }
 }
 
+
+
+// // ------ |-> RWD(Start) -------
+// 匯入RWD @mixin設定
+//===== mobile=====
+@include mobile{
+	.login_page{
+		// 因header變高,調整此區上間距
+		padding-top: 150px;
+		// 調整與下層外框間的左右距離
+		padding-left: 20px;
+		padding-right: 20px;
+		
+		// 外框
+		.login_content{	
+			padding: 3% 1% 1% 1%;
+
+			h3{
+				letter-spacing: 2px;
+				span{
+					letter-spacing: 5px;					
+					}
+			}
+		
+		// 登入區
+		.sign_in{
+			margin: 0 auto;
+			float: none;
+			width: 95%;
+			
+		}
+
+		// 快速登入區
+		.fast_sign_in{
+			float: none;
+			width: 100%;
+
+			margin: 0 auto;
+
+			ul{
+				li{
+					// 水平排列
+					float: left;
+
+					width: 48%;
+					margin-left: 1%;
+					margin-right: 1%;
+
+
+					a{}
+					.sign_up{
+						margin-top: 0;
+						padding: 15px;											
+						}					
+				}
+			}
+		}
+	}
+  }
+}
+
+//===== mobile end=====
+
+//===== mobile-s=====
+// 小螢幕手機
+@include mobile-s{
+	.login_page{	
+		// 外框
+		.login_content{		
+		// 登入區
+		.sign_in{}
+		// 快速登入區
+		.fast_sign_in{
+			ul{
+				li{
+					width: 100%;				
+				}
+			}
+		}
+	}
+  }
+}
+//===== mobile-s end=====
+
+//  ------ RWD (End) <-| -------
+
+
 // !-- ===============Product頁面主要內容end=============== -->
 
 // 頁尾

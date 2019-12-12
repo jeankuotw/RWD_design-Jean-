@@ -133,7 +133,9 @@ img {
   .nav .header .menu_login .login {
     padding: 15px 10px; }
   .nav .header .menu_login .menu li {
-    padding: 15px 10px; } }
+    padding: 15px 10px; }
+    .nav .header .menu_login .menu li a {
+      letter-spacing: 2px; } }
 
 @media (max-width: 768px) {
   .nav .header {
@@ -167,22 +169,22 @@ img {
         .nav .header .menu_login .menu li {
           /*變為直式menu(取消浮動)*/
           float: none;
-          background-color: #fff;
-          border-bottom: 0.5px solid #034d8a;
+          background-color: #000;
+          border-bottom: 0.5px solid #fff;
           padding: 0; }
           .nav .header .menu_login .menu li a {
             display: block;
             width: 100%;
             line-height: 60px;
             text-align: center;
-            color: #034d8a;
+            color: #fff;
             padding: 0; }
           .nav .header .menu_login .menu li a:hover {
             border-bottom: none;
             color: #fff;
             background-color: #034d8a; }
         .nav .header .menu_login .menu li:first-child {
-          border-top: 0.5px solid #034d8a; }
+          border-top: 0.5px solid #fff; }
       .nav .header .menu_login .hamburgermenu {
         display: block;
         float: right;
@@ -223,7 +225,7 @@ img {
 
 /*jQuery點擊後,顯示menu*/
 .menu-show .header .menu_login .menu {
-  max-height: 303px; }
+  max-height: 375px; }
 
 .footer {
   max-width: 100%;
@@ -243,13 +245,16 @@ img {
       margin-bottom: 20px;
       font-weight: bolder; }
     .footer .ContactUs_area p {
-      line-height: 20px;
       margin-bottom: 20px;
       line-height: 28px;
       letter-spacing: 1px; }
       .footer .ContactUs_area p span {
         font-weight: bolder;
-        letter-spacing: 2px; }
+        letter-spacing: 2px;
+        background-color: #fff;
+        color: #000;
+        padding-left: 5px;
+        padding-right: 5px; }
     .footer .ContactUs_area a {
       letter-spacing: 1px;
       color: yellow; }
@@ -265,6 +270,10 @@ img {
   right: 20px;
   bottom: -110px;
   z-index: 5; }
+
+@media (max-width: 600px) {
+  .footer .ContactUs_area p {
+    line-height: 21px; } }
 
 * {
   box-sizing: border-box;

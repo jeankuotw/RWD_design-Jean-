@@ -105,7 +105,12 @@ $fs-s:$fs-m*0.8;
 			.menu_login{				
 				.login{padding: 15px 10px;}
 			.menu {			
-			li{padding:15px 10px;}			
+			li{
+				padding:15px 10px;
+				a{
+					letter-spacing: 2px;
+				}
+				}			
 		}
 	  }
 	}
@@ -145,8 +150,8 @@ $fs-s:$fs-m*0.8;
 				li{
 					/*變為直式menu(取消浮動)*/
 					float:none;					
-					background-color:#fff;
-					border-bottom: 0.5px solid #034d8a;
+					background-color:#000;
+					border-bottom: 0.5px solid #fff;
 					// 取消橫式排版的padding
 					padding: 0;
 					a{	
@@ -157,7 +162,7 @@ $fs-s:$fs-m*0.8;
 						line-height: 60px;
 
 						text-align: center;
-						color:#034d8a;	
+						color:#fff;	
 
 						// 取消橫式排版的padding
 						padding: 0;				
@@ -168,7 +173,7 @@ $fs-s:$fs-m*0.8;
 						background-color: #034d8a;
 					}
 				}
-				li:first-child{border-top: 0.5px solid #034d8a;}			
+				li:first-child{border-top: 0.5px solid #fff;}			
 			}
 			.hamburgermenu{
 			display:block;
@@ -218,7 +223,7 @@ $fs-s:$fs-m*0.8;
 
 /*jQuery點擊後,顯示menu*/
  .menu-show .header  .menu_login .menu {
-	max-height: 303px;
+	max-height: 375px;
 }
 //  ------ RWD (End) <-| -------
 // ------ 共通區header(End) <-| -------
@@ -246,14 +251,17 @@ $fs-s:$fs-m*0.8;
 				margin-bottom: 20px;
 				font-weight: bolder;
 			}
-			p{
-				line-height: 20px;
+			p{				
 				margin-bottom: 20px;
 				line-height: $fs-m*2;
-				letter-spacing: 1px;		
+				letter-spacing: 1px;				
 				span{
 					font-weight: bolder;
 					letter-spacing: 2px;
+					background-color: #fff;
+					color:#000;
+					padding-left: 5px;
+					padding-right: 5px;
 					}				
 				}
 			a{
@@ -279,4 +287,18 @@ $fs-s:$fs-m*0.8;
 	z-index:5;
 }
 // ------ 關於我們AboutUs(End) <-| -------
+
+
+// ------ |-> RWD(Start) -------
+@include mobile{
+	.footer{	
+		.ContactUs_area{			
+			p{				
+				line-height: $fs-m*1.5;
+				}
+			}
+		}
+}
+//  ------ RWD (End) <-| -------
+
 // ------ 共通區footer(End) <-| -------
