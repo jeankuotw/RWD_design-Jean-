@@ -59,7 +59,7 @@ img {
   height: auto; }
 
 .nav {
-  z-index: 3;
+  z-index: 10;
   position: fixed;
   top: 0;
   left: 0;
@@ -283,8 +283,7 @@ img {
 
 body {
   font-family: Arial, Helvetica,"微軟正黑體" ,sans-serif;
-  background-color: #fff;
-  background-image: url(../img/bg_blue-snow.png); }
+  background-color: #fff; }
 
 .wrap {
   width: 100%;

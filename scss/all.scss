@@ -64,10 +64,20 @@ body{
 		top: 0;
 		left: 0;
 		z-index:2;
-		// max-width: 0;
-		// height: 0;
 	}
 }
+
+.arrow{
+	// 對齊上層wrap
+	position:absolute;	
+	left: 50%;
+	z-index:9;
+	cursor:pointer;	
+	// 先隱藏起來,再用jQuery做動畫效果
+	display:none;
+	opacity: 0;
+}
+
 
 // // ------ |-> RWD(Start) -------
 // 匯入RWD @mixin設定

@@ -13,6 +13,29 @@ $(function(){
 		$('.main_image>img:first').fadeOut(3000).next('img').fadeIn(800).end().appendTo('.main_image');}, 5000);
 
 
+
+	// 【arrow down(向下按鈕)】
+	// 取得視窗高度
+	var windowHeight=$(window).height();
+	// 取得視窗滾動條位置
+	var scrollPos = $(window).scrollTop();
+	// 取得News區的高度
+	var newsHeight=$("#News").offset().top;
+	// 取得主視覺片高度
+	var mainchangeHeight=$(".main_change").height();
+	console.log(mainchangeHeight);
+
+	// 【開啟視窗後出現arrow(向下按鈕)】
+	// CSS中設定樣式+隱藏起來(displya:none),再用jQuery做動畫fadeIn	
+	var arrow=$('.arrow');	
+	arrow.fadeIn().animate({top:mainchangeHeight-75,opacity:'0'},50).animate({top:mainchangeHeight-65,opacity:'1'},1000).animate({top:mainchangeHeight-75},1200).animate({top:mainchangeHeight-65},1000).animate({top:mainchangeHeight-75},1200).animate({top:mainchangeHeight-65},1000).animate({top:mainchangeHeight-75},1200).animate({top:mainchangeHeight-65},1000).animate({top:mainchangeHeight-75},1200).animate({top:mainchangeHeight-65},1000);	
+	// 【click效果】
+	arrow.on('click',function(){
+		$('html,body').animate({scrollTop:newsHeight},1500);
+	});
+
+
+
 // 監測menu的.menulilist click動作
 	$(".menulist").click(function(e){
 		e.preventDefault();
@@ -58,8 +81,9 @@ $(function(){
 	 	// 取得視窗高度
 	 	var windowHeight=$(window).height();
 	 	// console.log(windowHeight);
-		// 取得Ｎews區的高度
-		var newsHeight=$("#News").offset().top;
+		// 取得News區的高度
+		var newsHeight=$("#News").offset().top;	
+
 
 	 	// 【topicon動畫功能】
 	 	// 當向下滑超過視窗高度一半時,出現topcon
