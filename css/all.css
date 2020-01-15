@@ -314,7 +314,6 @@ body {
   .main_image .main_image_bg {
     max-width: 100%; }
   .main_image > img {
-    max-width: 758px;
     height: 375px; } }
 
 #News {
