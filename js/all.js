@@ -3,6 +3,19 @@ $(function(){
 	var showSkill=false; // (nav效果,避免事件觸發用)一開始先預設false,代表尚未執行過slideDown效果
 
 	// ====主視覺輪播效果====
+	// 修改(2020/1/17):使用背景圖的方式換圖start
+
+	// (原始)
+	// (參考http://jsfiddle.net/audrasjb/9nk7g/)
+	// gt(0)=第1張以後的照片全部先隱藏
+	// $('.main_image>img:gt(0)').hide();
+	// 輪播計時器
+	// setInterval(function(){
+		// 第一張圖fadeOut,下一張圖fadeIn。end():結束鏈結返回開頭。
+		// appendTo('.main_image'):將.appendTo()前方的內容貼至.main_image前
+		// $('.main_image>img:first').fadeOut(3000).next('img').fadeIn(800).end().appendTo('.main_image');}, 5000);
+	
+	
 	// (參考http://jsfiddle.net/audrasjb/9nk7g/)
 	// gt(0)=第1張以後的照片全部先隱藏
 	$('.main_image>img:gt(0)').hide();
@@ -10,8 +23,9 @@ $(function(){
 	setInterval(function(){
 		// 第一張圖fadeOut,下一張圖fadeIn。end():結束鏈結返回開頭。
 		// appendTo('.main_image'):將.appendTo()前方的內容貼至.main_image前
-		$('.main_image>img:first').fadeOut(3000).next('img').fadeIn(800).end().appendTo('.main_image');}, 5000);
-
+		$('.main_image>.main_image_bg>div:first').fadeOut(1800).next('div').fadeIn(2000).end().appendTo('.main_image_bg');}, 5000);
+	
+	// 修改(2020/1/17)end
 
 
 	// 【arrow down(向下按鈕)】
@@ -22,13 +36,13 @@ $(function(){
 	// 取得News區的高度
 	var newsHeight=$("#News").offset().top;
 	// 取得主視覺片高度
-	var mainchangeHeight=$(".main_change").height();
-	console.log(mainchangeHeight);
+	var mainchangeHeight=$(".main_image").height();
+	// console.log(mainchangeHeight);
 
 	// 【開啟視窗後出現arrow(向下按鈕)】
 	// CSS中設定樣式+隱藏起來(displya:none),再用jQuery做動畫fadeIn	
 	var arrow=$('.arrow');	
-	arrow.fadeIn().animate({top:mainchangeHeight-75,opacity:'0'},50).animate({top:mainchangeHeight-65,opacity:'1'},1000).animate({top:mainchangeHeight-75},1200).animate({top:mainchangeHeight-65},1000).animate({top:mainchangeHeight-75},1200).animate({top:mainchangeHeight-65},1000).animate({top:mainchangeHeight-75},1200).animate({top:mainchangeHeight-65},1000).animate({top:mainchangeHeight-75},1200).animate({top:mainchangeHeight-65},1000);	
+	arrow.fadeIn().animate({top:mainchangeHeight-78,opacity:'0'},50).animate({top:mainchangeHeight-70,opacity:'1'},1000).animate({top:mainchangeHeight-78},1200).animate({top:mainchangeHeight-70},1000).animate({top:mainchangeHeight-78},1200).animate({top:mainchangeHeight-70},1000).animate({top:mainchangeHeight-78},1200).animate({top:mainchangeHeight-70},1000).animate({top:mainchangeHeight-78},1200).animate({top:mainchangeHeight-70},1000);	
 	// 【click效果】
 	arrow.on('click',function(){
 		$('html,body').animate({scrollTop:newsHeight},1500);
@@ -83,7 +97,8 @@ $(function(){
 	 	// console.log(windowHeight);
 		// 取得News區的高度
 		var newsHeight=$("#News").offset().top;	
-
+		// 取得視窗寬度(2020/1/30追加寬度條件)
+		var windowWidth=$(window).width();
 
 	 	// 【topicon動畫功能】
 	 	// 當向下滑超過視窗高度一半時,出現topcon
@@ -95,7 +110,8 @@ $(function(){
 
 	 	// 【nav動畫功能】
 	 	// 當視窗往下滑到一定高度時,nav瀏覽列加上黑底色
-	 	if(scrollPos>windowHeight*0.8|scrollPos>newsHeight-1 && !showSkill){
+	 	// (2020/1/30追加寬度條件,windowWidth>769px以上,此功能才會啟動,所以ipad以下都不會重複出現menu動畫)
+	 	if(scrollPos>windowHeight*0.8|scrollPos>newsHeight-1 && !showSkill && windowWidth>=769){
 	 		// slideDown動畫只顯示一次(在最上方先宣告var showSkill=false)
 			showSkill=true;
 			$(".nav").hide().css({"background-color":"#000"}).slideDown(1000); 	

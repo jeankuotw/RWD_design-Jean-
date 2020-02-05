@@ -4,12 +4,24 @@
 // 清除浮動
 @import "_clearfix.scss";
 // 共通頁面(header,footer)
-@import "_headerfooter.scss";
+// @import "_headerfooter.scss";
+
+// (2020/2/5修改-1-合併headerfooter.scss)start
+// 匯入RWD mixin格式
+@import "_grid.scss";
+//div中的內容水平置中(Horizontal)
+@import "_horizontal.scss";
+// (2020/2/5修改-1-合併headerfooter.scss)end
+
 
 // 字體設定
 $fs-m:14px;
 $fs-l:$fs-m*1.4;
 $fs-s:$fs-m*0.8;
+
+// hover效果
+$hover-bg:#034d8a;
+$hover-c:#fff;
 
 // 各區標題設定
 @mixin titleset{
@@ -20,8 +32,7 @@ $fs-s:$fs-m*0.8;
 		font-weight: bolder;
 }
 
-// =============正式內容====================
-
+// ==================== 正式內容 start ====================
 *{
 	// CSS3語法:讓div的寬度不被padding,border影響
 	box-sizing: border-box;
@@ -37,35 +48,475 @@ body{
 	background-color: #fff;
 }
 
-// ------ |-> 共通區header(Start) -------
+// ============ |-> 共通區header(Start) ============
 .wrap{	
 	width: 100%;
 	margin: 0 auto;	
+
+	// (2020/2/4修改-1-階層修改,將menu_login和menu拆成同一階)start
+	.nav{
+		z-index: 10;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+
+		.header{
+			max-width: 1366px;
+			padding: 10px 50px;
+			margin: 0 auto;
+
+			// 呼叫clearfix設定
+			@include clearfix();
+
+			.menu_login{
+				float: right;
+				.login{
+					// 浮動在右邊
+					float: right;
+					text-decoration: none;
+					color:#fff;
+					border:1.5px solid #fff;
+					border-radius: 2px;			
+					padding: 15px 20px;
+					opacity: 0.75;
+					font-weight: bolder;
+					letter-spacing: 3px;
+					font-size:$fs-s;
+
+					// 按鈕特效(<a>display:inline-block;<a:hover>transform:translateY(2px);)
+					display:inline-block;
+					transition:all 0.2s;
+				}
+				.login:hover{
+						background-color: #fff;
+						color:#000;
+						transition:all 0.3s;
+
+						transform:translate(2px,2px);
+					}
+				.hamburgermenu{
+					// PC ver.先隱藏menu
+					display:none;
+				}		
+			  }
+
+			.menu{
+				// 浮動在右邊
+				float: right;
+				margin-right: 20px;
+				li{
+					// 水平排列
+					float: left;
+					//(2020/1/31修改)start-按鈕主要設定在<a>,增加點擊範圍。li只下左右padding(美觀,讓border-bottom不要太長)
+					padding: 0 20px;
+					a{					
+						text-decoration: none;
+						color:#fff;										
+						font-weight: bolder;
+						letter-spacing: 3px;
+						// padding-bottom: 10px;
+						font-size:$fs-s;
+
+						//(2020/1/31修改)start- <a>設定display:block+padding上下(左右寬度下在li),增加按鈕點擊範圍
+						display: block;
+						padding: 15px 0;
+						//(2020/1/31修改)end
+					}
+					a:hover{
+						border-bottom: 3px solid #fff;
+						border-bottom-width: 20%;			
+						transition:all 0.1s;
+					}
+				}
+			}
+
+			.logo{
+				// 浮動在左邊
+				float: left;
+				a{	
+					background-image: url(../img/UNDElogowhitew.png);
+					display: block;
+					width: 150px;
+					height: 50px;
+					// 隱藏a標籤中的文字訊息
+					text-indent:101%;
+					overflow:hidden;
+					white-space: nowrap;
+				}
+			}
+		}
+	}
+}
+
+// ........... |-> RWD(Start) ...........
+// w900設定
+@include w900{
+		.wrap .nav .header {
+			.menu_login{				
+				.login{
+					padding: 15px 10px;
+				}
+	  }
+			.menu {			
+				li{
+					padding:0 10px;
+					a{
+						letter-spacing: 2px;
+						}
+					}
+			}
+	}
+}
+
+// ipad
+@include ipad{
+	.wrap .nav .header {		
+		padding: 10px 10px;
+		
+		// (2020/1/30修改)start
+		background-color: #000;
+		// (2020/1/30修改)end
+
+		/*上層:讓下層.menu對齊用*/
+		position: relative;
+
+		.menu_login{
+			margin-bottom: 10px;
+			.login{
+				padding: 10px 20px;
+				margin-top: 8px;
+				float: right;
+				margin-right: 10px;				
+			}
+			.hamburgermenu{
+			display:block;
+			float: right;
+			margin-right: 10px;
+			margin-top: 10px;
+			// 按鈕特效(<a>display:inline-block;<a:hover>transform:translateY(2px);)		
+			display: inline-block;
+			transition:all 0.2s;
+			}
+			.hidemenu:hover{			
+				transform:translate(2px,2px);
+			}
+		}
+		.menu{
+			// menu先隱藏起來：設定max-height&overflow (注意：不能使用display:none;)
+			max-height: 0;
+			overflow:hidden;
+			/*CSS3:指定max-height特效轉場時間*/
+    		transition: max-height 2.5s;
+		    /*下層：對齊上層header。
+	      	設定出現位置在menu_login的下方大於54px)
+	        (重要)並設定left:0,right:0,就可以讓menu左右滿版*/
+		    position: absolute;
+			top: 60px;
+			left: 0;
+			right: 0;
+			margin-right: 0;
+			/*將直式menu蓋在網頁最上層*/
+			z-index:99;
+			li{
+				/*變為直式menu(取消浮動)*/
+				float:none;					
+				background-color:#000;
+				border-bottom: 0.5px solid #fff;
+				// 取消橫式排版的padding
+				padding: 0;
+				a{	
+					// 設定a寬度跟li一樣
+					display: block;
+					width: 100%;
+					// 行高需高於44px(手指寬度為44px)
+					line-height: 60px;
+
+					text-align: center;
+					color:#fff;	
+
+					// 取消橫式排版的padding
+					padding: 0;				
+				}
+				a:hover{
+					border-bottom: none;
+					color:#fff;
+					background-color: #034d8a;
+				}
+			}
+			li:first-child{border-top: 0.5px solid #fff;}			
+		}
+	}
 }
 
 
-// ------ |-> 主視覺main_image(Start) -------
-.main_image{
-	position:relative;
+// mobile
+ @include mobile{
+ 		.wrap .nav {
+ 			.header { 
+ 				.menu_login{
+					float: none;
 
-	// 呼叫clearfix設定
-	// @include clearfix();
-			
+					// 呼叫clearfix設定
+					@include clearfix();
+
+		 			.login{
+		 				float: right;
+						}
+					.hamburgermenu{						
+						float: right;
+						margin-right: 0;
+	 					}
+	 				}
+		 			.logo{
+		 				float: none;	
+		 				
+		 				// 將div中的內容水平置中
+		 				@include horizontal();
+
+		 			} 		
+ 				}
+  		}
+ }
+
+/*jQuery點擊後,顯示menu*/
+.wrap .menu-show .header .menu {
+	max-height: 375px;
+}
+// (2020/2/4修改-1-階層修改)end
+//  ........... RWD (End) <-| ...........
+// ============ 共通區header(End) <-| ============
+
+
+// ============ |-> 共通區footer(Start) ============
+// ------ |-> 關於我們AboutUs(Start) -------
+.wrap{
+	.footer{
+		max-width: 100%;	
+		margin: 120px auto 0 auto;
+		background-color: #000;
+			.ContactUs_area{
+				max-width: 1366px;
+				margin: 0 auto;
+				opacity: 0.8;
+				padding: 60px 60px 20px 60px;				
+				color:#fff;
+				h2{
+					font-size: $fs-l;
+					font-weight: bolder;
+					line-height: $fs-l*1.8;
+					}
+				h3{
+					margin-bottom: 20px;
+					font-weight: bolder;
+				}
+				p{				
+					margin-bottom: 20px;
+					line-height: $fs-m*2;
+					letter-spacing: 1px;				
+					span{
+						font-weight: bolder;
+						letter-spacing: 2px;
+						background-color: #fff;
+						color:#000;
+						padding-left: 5px;
+						padding-right: 5px;
+						}				
+					}
+				a{
+					letter-spacing: 1px;
+					color:yellow;
+				}
+				.googlemapIcon{
+					margin-left: 10px;
+				}
+				h4{
+					text-align: center;
+					font-size:$fs-s;
+					letter-spacing: 1px;
+				}
+
+			}
+	}
+	// 回到TOP icon
+	.topicon{
+		position:fixed;
+		right: 20px;
+		bottom: -110px;
+		z-index:5;
+	}
+}
+// ------ 關於我們AboutUs(End) <-| -------
+
+
+// ......... |-> RWD(Start) .........
+@include mobile{
+	.footer{	
+		.ContactUs_area{			
+			p{				
+				line-height: $fs-m*1.5;
+				}
+			}
+		}
+}
+//  ......... RWD (End) <-| .........
+// (2020/2/5修改-1-合併headerfooter.scss)end
+// ============ 共通區footer(End) <-| ============
+
+
+
+// ============= |-> index.html主頁內容 start =============
+// (2020/1/30修改-1-建議.main_image裡面的文字請改用標題標籤呈現，以提升搜尋排名、2.將主視覺改成由插入背景的方式呈現)start
+// ------ |-> 主視覺main_image(Start) -------
+.wrap{
+ .main_image{
+ 	max-width: 100%;		
 	.main_image_bg{
-		max-width: 1920px;
-		.img{	
-			// max-width: 1920px;
+		position:relative;
+		// max-width: 1920px;
+		
+		.img{			
 			z-index:1;
 			opacity:0;
 		}
-	}	
-	>img{
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index:2;
+		.main_change_1{
+			position:absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-image: url(../img/mainpt01.jpg);
+			// cover-使背景圖放大至內容的大小
+			background-size: cover;			
+			z-index:9;
+
+			h2{
+				position:absolute;
+				color:#fff;
+				right: 50px;
+				top: 69%;
+				width: 340px;
+				strong{
+					text-align: left;
+					letter-spacing: 6px;
+					font-size: 3rem;
+					font-weight: bold;
+					text-shadow: black 0.1em 0.1em 0.2em;									
+				}
+			
+			// 分隔線設定
+			.hr_style{
+				position:absolute;
+				text-align: left;
+				width: 340px;				
+				border-width: 1.3px 0 0 0;
+				color: #fff;
+				border-style: solid;				
+			}
+			span{
+				position:absolute;				
+				right: 0;
+				color:#fff;
+				font-size: 1.2rem;
+				letter-spacing: 4px;
+				word-spacing:10px;
+				text-shadow: black 0.1em 0.1em 0.2em;
+				}
+			}
+		}
+		.main_change_2{
+			position:absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-image: url(../img/mainpt02.jpg);
+			// cover-使背景圖放大至內容的大小
+			background-size: cover;
+			z-index:8;
+
+			h2{
+				position:absolute;
+				color:#fff;
+				right: 50px;
+				top: 75%;
+				width: 340px;
+				strong{
+					text-align: left;
+					letter-spacing: 6px;
+					font-size: 3rem;
+					font-weight: bold;
+					text-shadow: black 0.1em 0.1em 0.2em;									
+				}
+			
+			// 分隔線設定
+			.hr_style{
+				position:absolute;
+				text-align: left;
+				width: 340px;				
+				border-width: 1.3px 0 0 0;
+				color: #fff;
+				border-style: solid;				
+			}
+			span{
+				position:absolute;				
+				right: 0;
+				color:#fff;
+				font-size: 1.2rem;
+				letter-spacing: 4px;
+				word-spacing:10px;
+				text-shadow: black 0.1em 0.1em 0.2em;
+				}
+			}
+		}
+		.main_change_3{
+			position:absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-image: url(../img/mainpt03.jpg);
+			// cover-使背景圖放大至內容的大小
+			background-size: cover;
+			z-index:7;
+
+			h2{
+				position:absolute;
+				color:#fff;
+				left: 50px;
+				top: 69%;
+				width: 340px;
+				strong{
+					text-align: left;
+					letter-spacing: 6px;
+					font-size: 3rem;
+					font-weight: bold;
+					text-shadow: black 0.1em 0.1em 0.2em;									
+				}
+			
+			// 分隔線設定
+			.hr_style{
+				position:absolute;
+				text-align: left;
+				width: 340px;				
+				border-width: 1.3px 0 0 0;
+				color: #fff;
+				border-style: solid;				
+			}
+			span{
+				position:absolute;				
+				right: 0;
+				color:#fff;
+				font-size: 1.2rem;
+				letter-spacing: 4px;
+				word-spacing:10px;
+				text-shadow: black 0.1em 0.1em 0.2em;
+				}
+			}
+		}	
 	}
 }
+
 
 .arrow{
 	// 對齊上層wrap
@@ -77,24 +528,96 @@ body{
 	display:none;
 	opacity: 0;
 }
+}
 
 
 // // ------ |-> RWD(Start) -------
 // 匯入RWD @mixin設定
+@include ipad{
+	.main_image{
+		.main_image_bg{
+			
+
+			img{}
+			.main_change_1{
+				
+				h2{			
+					strong{font-size: 2.5rem;}
+				
+				// 分隔線設定
+				.hr_style{}
+				span{font-size: 1.1rem;}
+				}
+			}
+	 	}
+  	}
+}
+
 // 手機板主視覺圖片高度固定
 @include mobile{
 	.main_image{
 		.main_image_bg{
 			max-width: 100%;
-			.img{}
+
+			img{height: 475px;}
+
+			.main_change_1{
+				background-position: top center;
+				h2{	
+				    left: 40px;
+					top: 78%;
+					width: 280px;		
+					strong{font-size: 2.2rem;
+					}			
+				// 分隔線設定
+				.hr_style{width: 280px;}
+				span{
+					font-size: 1rem;
+					right: 0;
+					}
+				}
+		}
+
+			.main_change_2{
+				background-position: top center;
+			h2{	
+			    left: 25px;
+				top: 78%;
+				width: 280px;		
+				strong{font-size: 2.2rem;
+				}			
+			// 分隔線設定
+			.hr_style{width: 280px;}
+			span{
+				font-size: 1rem;
+				right: 0;
+				}
 			}
-	>img{		
-		height: 375px;
-	}
-	}
+		}
+
+			.main_change_3{
+				background-position: center center;
+			h2{	
+			    left: 25px;
+				top: 78%;
+				width: 300px;		
+				strong{font-size: 2.2rem;
+				}			
+			// 分隔線設定
+			.hr_style{width: 300px;}
+			span{
+				font-size: 1rem;
+				right: 0;
+				}
+			}
+		}
+	 }
+  }
 }
+
 //  ------ RWD (End) <-| -------
 
+// (2020/1/30修改-1)end
 // ------ 主視覺main_image(End) <-| -------
 
 
@@ -166,7 +689,7 @@ body{
 }
 @include mobile{
 	#News{
-		padding-top: 250px;
+		padding-top: 150px;
 		.newslist{
 			li{
 				width: 98%;				
@@ -231,7 +754,7 @@ body{
 	}
 }
 
-// // ------ |-> RWD(Start) -------
+// .......... |-> RWD(Start) ..........
 // 匯入RWD @mixin設定
 #AboutUs{		
 	.AboutUs_area{
@@ -250,6 +773,702 @@ body{
 	}
 }
 
-//  ------ RWD (End) <-| -------
+// .......... RWD (End) <-| ..........
 // ------ 關於我們AboutUs(End) <-| -------
+// ============= index.html主頁內容 end <-| =============
 
+
+
+
+// ============= |-> product.html頁內容 start =============
+// (2020/2/5修改-3-合併login.scss)start
+.wrap{
+	.nav-bg{
+		background-color: #000;
+	}
+	.Product{
+	max-width: 1366px;
+	margin: 0 auto;
+	
+	// 調整此區上下間距(需在此區用padding調整,才不會變成白底)
+	padding-top: 120px;
+	padding-bottom: 80px;
+	// background-color: yellow;
+
+	// 消除該層浮動狀態
+	@include clearfix();
+
+	// <!-- ===============搜尋商品&購物車=============== -->
+	.Search_Shop{	
+		max-width: 1366px;
+		margin-right: 3%;
+		// 清除此區浮動狀態
+		@include clearfix();
+
+		// <!-- ===============購物車=============== -->
+		.Shopping_cart{		
+			float: right;
+			background-color: #cae0ee;
+
+			// <a>中置入圖片
+			background-image: url(../img/shopcart24.png);
+			background-repeat: no-repeat;		
+			background-position: 10px 10px;
+
+
+			font-size:$fs-l;
+			font-weight: bolder;
+			text-decoration: none;
+			color:#000;
+
+			border: 3px solid  #000;
+			border-radius: 5px;
+			padding: 15px 20px 10px 40px;
+
+			// 按鈕特效(<a>display:inline-block;<a:hover>transform:translateY(2px);)
+			display:inline-block;
+			transition:all 0.2s;
+		}
+		.Shopping_cart:hover{
+			background-color: $hover-bg;
+			color:$hover-c;
+
+			transform:translate(2px,2px);
+		}
+
+		// <!-- ===============搜尋商品=============== -->
+		.Search_form{					
+			float: right;
+			margin-right: 5%;
+			margin-top: 5px;
+			input{			
+				line-height: 24px;
+				border:3px solid #000;			
+				border-radius: 15px;
+				padding:5px 150px 5px 15px;			
+				}
+			// 消除點擊input時預設的藍框
+			input:focus{
+				outline:none;
+				}
+			.search_bt{
+				float: right;
+				margin-left: 5px;
+				
+				background-color: #cae0ee;
+				
+				border:3px solid #000;			
+				border-radius: 10px;
+				padding: 3px 5px;
+				}
+			}
+	}
+
+	// <!-- ===============類別區=============== -->
+	.Product_category{
+		float: left;
+		// 類別區比例
+		width: 20%;
+		margin-left: 3%;
+		margin-right: 3%;
+		// background-color: green;	
+		
+		h4{
+			font-size: $fs-l;
+			font-weight: bolder;
+			line-height: 40px;
+			letter-spacing: 0.5px;	
+		}
+		.select{
+			padding-left: 20px;
+
+			li{
+				border-bottom: 1px solid #000;			
+				a{
+					font-weight: bolder;
+					letter-spacing: 1px;
+					display:block;
+					padding: 15px 5px 15px 5px;
+				}
+				a:hover{
+					background-color: $hover-bg;
+					color:$hover-c;
+					transition:all 0.3s;
+				}
+			}
+		}
+	}
+
+// <!-- ===============選擇商品=============== -->
+	.Producut_menu_select{
+		margin-top: 15px;
+		// 與Product_category水平排列
+		float: left;
+		width: 71%;
+		margin-right: 3%;
+
+		// 清除此區浮動狀態
+		@include clearfix();
+		
+		li{
+			// 水平排列
+			float: left;
+			// PC版:一排四個商品
+			width: 23%;
+			height: 320px;
+			margin-left: 1%;
+			margin-right: 1%;
+			margin-bottom: 20px;
+			border:1px solid #000;
+			border-radius: 10px;
+			padding: 15px 10px;
+			text-align: center;
+			box-shadow: 2px 2px gray;
+			background-color: #e9f3fa;			
+			// 讓下層(hottag)對齊用
+			position: relative; 
+				
+			// 更新
+			// 按鈕特效(<a>display:inline-block;<a:hover>transform:translateY(2px);)
+			display:inline-block;
+			transition:all 0.2s;
+
+			a{
+				img{
+					margin-bottom: 10px;					
+				}
+				.hottag{
+					// 對齊上層li
+					position: absolute;					
+					top: 20px;
+					right: 15px;
+					background-color: red;					
+					padding:10px 8px;					
+					color:#fff;
+					font-weight: bolder;								
+				}			
+			}
+			.select_info{
+			h2{				
+				height: 65px;				
+				span{
+					font-size: $fs-l;
+					line-height: $fs-l*1.5;	
+					display:inline-block;
+					// margin-bottom: 30px;				
+				}
+			}
+			p{
+				margin-top: 10px;				
+				margin-bottom: 20px;
+				letter-spacing: 2px;
+				span{
+					font-size: $fs-l*1.1;
+					font-weight: bolder;
+					letter-spacing: 1px;
+				}
+			}
+
+			// 更新
+			// 追蹤商品
+			.follow{
+				border-radius: 20px;
+				background-color: gray;
+				font-weight: bolder;
+				color:$hover-c;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				// padding: 10px 20px;
+				transition:all 0.2s;
+
+				width: 30%;
+				margin-left: 5%;
+				margin-right: 1%;
+				
+				float: left;
+
+				// 按鈕特效(<a>display:inline-block;<a:hover>transform:translateY(2px);)
+				 display: inline-block;
+			}
+			.follow:hover{
+				background-color: #000;
+				color:$hover-c;			
+				transform: translate(2px,2px);
+			}
+
+			// 加入購物車
+			.carin{
+				border-radius: 20px;
+				background-color: brown;
+				font-weight: bolder;
+				color:$hover-c;
+				padding-top: 10px;
+				padding-bottom: 10px;				
+				transition:all 0.2s;
+
+				width: 60%;
+				margin-left: 1%;
+				margin-right: 3%;
+				float: left;
+
+				// 按鈕特效(<a>display:inline-block;<a:hover>transform:translateY(2px);)
+				 display: inline-block;
+			}
+			.carin:hover{
+				background-color: $hover-bg;
+				color:$hover-c;			
+				transform: translate(2px,2px);
+			}
+		}
+	}
+		li:hover{
+			background-color: #cad5f0;
+			// color: #002c8b;		
+			transform:translate(2px,2px);
+			// 滑鼠變為手指形狀
+			cursor:pointer;	
+		}
+	}
+  }
+  .page{
+  	width: 71%;
+  	float: right;
+  	text-align: center;
+  	a{
+  		color:brown;
+  		text-decoration: none;
+  	}  
+  }
+  .footer-mt{
+  	margin-top: 0;
+  }
+}
+
+// // .......... |-> RWD(Start) ..........
+// 匯入RWD @mixin設定
+// =====w900=====
+@include w900{
+	.wrap .Product{	
+		.Producut_menu_select{		
+				li{	
+					// w900(寬900px以下):一排三個商品				
+					width:31.33333%;							
+				}			
+			}		
+		}
+}
+// =====w900 end=====
+
+
+// =====ipad=====
+@include ipad{
+	.wrap .Product{	
+		padding: 120px 3% 80px 3%;	
+		// <!-- ===============搜尋商品、購物車=============== -->	
+		.Search_Shop{
+			// <!-- ===============購物車=============== -->
+			.Shopping_cart{}
+			.Search_form{			
+					margin-right: 10px;
+					margin-bottom: 10px;
+					float: left;
+
+					// 清除此區浮動狀態
+					@include clearfix();	
+				
+				input{}
+				.search_bt{}
+		  	}
+		}	
+		// <!-- ===============類別區=============== -->
+		.Product_category{		
+				float: none;
+				width: 100%;
+				margin: 0;
+
+				h4{
+					display: none;
+					}
+				.select{
+					padding-left: 0;
+					li{				
+						// 變為水平排列
+						float: left;
+						margin-right: 2%;
+						border-bottom: none;				
+				}
+			}		
+		}
+
+		.Producut_menu_select{		
+				width: 100%;
+				margin-right: 0;
+				float: none;	
+				margin-bottom: 10px;					
+				li{
+					width: 48%;
+					height: auto;
+
+
+					}			
+				}
+		// <!-- ===============頁面=============== -->
+		.page{
+			width: 100%;
+  			float: none;
+		}
+	}		
+}
+// =====ipad end=====
+
+//===== mobile=====
+@include mobile{
+	.wrap .Product{
+		padding-top: 135px;
+
+		// 清除此區浮動狀態
+		@include clearfix();	
+		// <!-- ===============搜尋商品、購物車=============== -->	
+		.Search_Shop{		
+			// <!-- ===============購物車=============== -->
+			.Shopping_cart{			
+					float: right;
+					margin-bottom: 10px;
+			
+			}
+			.Search_form{			
+					float: left;
+					max-width: 100%;
+					margin-right: 0;				
+
+				input{
+					padding-right: 35px;				
+				}
+				.search_bt{
+					float: right;								
+				}
+		  	}
+		}	
+		// <!-- ===============類別區=============== -->
+		.Product_category{
+					// 清除此區浮動狀態
+					@include clearfix();
+						margin-top: 5px;
+						margin-bottom: 15px;
+					.select{
+
+						li{
+							// padding: 0;										
+							a{
+								padding-top: 5px;
+								padding-bottom: 5px;
+							}
+						}
+				}	
+		}
+
+		.Producut_menu_select{
+			margin-top: 0;
+				li{	
+					// mobile:一排一個商品
+					width: 98%;
+					height: auto;
+					a{				
+						float: left;
+						width: 50%;				  
+
+						img{}
+						.hottag{						
+							width: 48%;
+							left: 10px;
+							top: 10px;							
+						}
+					}
+
+						.select_info{
+							width: 48%;
+							margin-left: 2%;
+	    					float: right;
+							h2{}
+					
+							.follow{
+							}
+							.carin{				
+							}
+						}				
+				}			
+			}
+	}
+}
+// ====mobile end=====
+//  .......... RWD (End) <-| ..........
+// (2020/2/5修改-3-合併login.scss)end
+// ============= product.html頁內容 end <-| ===============
+
+
+
+
+// ============= |-> login.html頁內容 start =============
+// (2020/2/5修改-2-合併login.scss)start
+.wrap{
+	.nav-bg{
+		background-color: #000;
+	}
+	.login_page{
+	max-width: 600px;
+	margin: 0 auto;
+
+	// 調整此區上下間距(需在此區用padding調整,才不會變成白底)
+	padding-top: 120px;
+	padding-bottom: 80px;	
+
+	// 外框
+	.login_content{
+	border-radius: 5px;
+	box-shadow: 4px 4px gray;
+	margin: 10px auto;
+	background-color: #e9f3fa;	
+	border:1.5px solid #000;
+	padding: 30px 20px 20px 20px;
+
+	// 清除此層浮動狀態
+	@include clearfix();
+
+	h3{
+		border-bottom:5px solid #000;
+		
+		width: 80%;
+		margin: 0 auto;
+		font-size: $fs-l*1.3;
+		font-weight: bolder;		
+		text-align: center;		
+		padding-top: 10px;
+		padding-bottom: 10px;
+		letter-spacing: 3px;		
+		color:#000;
+		margin-bottom: 10px;
+		line-height: $fs-l*1.5;	
+		border-radius: 2px;
+
+		span{
+			letter-spacing: 10px;
+			font-size: $fs-l*1.3;			
+			color:#000;
+		}
+	}
+
+	// 登入區
+	.sign_in{
+		float: left;
+		width: 50%;
+		padding: 10px 30px 10px 30px;	
+
+		label{
+			margin-bottom: 5px;
+			font-weight: bolder;
+		}
+		input#account{
+			margin-bottom: 20px;
+			width: 100%;
+		    font-size: $fs-m;
+			line-height: $fs-m*1.5;
+			box-shadow: 2px 2px gray;
+		    }
+		input#password{
+			  width: 100%;
+			  font-size: $fs-m;
+			  line-height: $fs-m*1.5;
+			  box-shadow: 2px 2px gray;
+			}
+
+		a{
+			margin-bottom:20px;
+		  	color:brown;
+		 	font-size: $fs-s;
+
+		 	}
+
+		.pure-checkbox{
+			text-align: center;
+			margin-bottom: 10px;
+			font-weight: normal;
+		}
+		button{
+			margin-left: 30%;
+			width: 50%;
+			border-radius: 5px;
+			box-shadow: 2px 2px #000;
+
+			// 按鈕位移效果(display+transition+transform)
+			display:inline-block;
+			transition:all 0.2s;
+
+			}
+		button:hover{
+			transform:translate(2px,2px) ;
+		}
+	}
+
+	// 快速登入區
+	.fast_sign_in{
+		float: right;
+		width: 50%;
+		padding: 20px 20px 10px 20px;
+
+		ul{
+			li{
+				margin-bottom: 8px;
+
+				a{
+					display:block;
+					padding: 15px 30px 15px 60px;
+					border:1.5px solid gray;
+					border-radius: 20px;
+					background-color: #fff;
+					font-size: $fs-m;
+					width: 100%;
+					box-shadow: 2px 2px gray;
+
+					// 按鈕位移效果(display+transition+transform)
+					display:inline-block;
+					transition:all 0.2s;
+				}
+				.google{
+						background-image: url(../img/googleicon32.png);
+						background-repeat: no-repeat;
+						background-position: 20px center;						
+					}
+				.google:hover{
+					transform:translate(2px,2px);
+				}
+				
+				.fb{
+					background-image: url(../img/fbicon32.png);
+					background-repeat: no-repeat;
+					background-position: 20px center;						
+					}
+				.fb:hover{
+					transform:translate(2px,2px);
+				}
+				
+				.line{
+					background-image: url(../img/lineicon32.png);
+					background-repeat: no-repeat;
+					background-position: 20px center;
+					}
+				.line:hover{
+					transform:translate(2px,2px);
+				}
+				
+				.sign_up{
+					// background-color: orange;
+					text-align: center;
+					font-weight: bolder;
+					color:#fff;
+					padding: 15px 30px;
+					margin-top: 30px;
+					border:none;
+					font-size: $fs-l;	
+					// CSS3漸層效果:由上往下漸層;
+					background: linear-gradient(orange,red);				
+					}
+				.sign_up:hover{
+					transform:translate(2px,2px);
+				}
+			}
+		}		
+	  }
+    }
+ }
+ .footer-mt{
+ 	margin-top: 0;
+ 	}
+}
+
+// // .......... |-> RWD(Start) ..........
+// 匯入RWD @mixin設定
+//===== mobile=====
+@include mobile{
+	.wrap .login_page{
+		// 因header變高,調整此區上間距
+		padding-top: 150px;
+		// 調整與下層外框間的左右距離
+		padding-left: 20px;
+		padding-right: 20px;
+		
+		// 外框
+		.login_content{	
+			padding: 3% 1% 1% 1%;
+
+			h3{
+				letter-spacing: 2px;
+				span{
+					letter-spacing: 5px;					
+					}
+			}
+		
+		// 登入區
+		.sign_in{
+			margin: 0 auto;
+			float: none;
+			width: 95%;
+			
+		}
+
+		// 快速登入區
+		.fast_sign_in{
+			float: none;
+			width: 100%;
+
+			margin: 0 auto;
+
+			ul{
+				li{
+					// 水平排列
+					float: left;
+
+					width: 48%;
+					margin-left: 1%;
+					margin-right: 1%;
+
+
+					a{}
+					.sign_up{
+						margin-top: 0;
+						padding: 15px;											
+						}					
+				}
+			}
+		}
+	}
+  }
+}
+
+//===== mobile end=====
+
+//===== mobile-s=====
+// 小螢幕手機
+@include mobile-s{
+	.wrap .login_page{	
+		// 外框
+		.login_content{		
+		// 登入區
+		.sign_in{}
+		// 快速登入區
+		.fast_sign_in{
+			ul{
+				li{
+					width: 100%;				
+				}
+			}
+		}
+	}
+  }
+}
+//===== mobile-s end=====
+//  .......... RWD (End) <-| ..........
+// (2020/2/5修改-2-合併login.scss)end
+// ============= login.html頁內容 end <-| ===============
+
+
+// ==================== 正式內容 end ====================

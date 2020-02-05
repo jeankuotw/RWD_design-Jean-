@@ -45,39 +45,58 @@
 
 		<!-- **共通區start** -->
 		<!-- header導覽列(fixed上方) -->
+		
+		<!-- (2020/2/4修改-1-html階層維持在4個以內)start-->
 		<div class="nav">
 			<div class="header">
 				<div class="menu_login">
 					<a class="hamburgermenu" href="#"><img src="img/hamburgermenu32.png"></a>
 
 					<a  class=login href="login.html">LOG IN</a>
-					
-					<ul class="menu">
-						<li><a class="hometop" href="#">HOME</a></li>
-						<li><a class="menulist" href="#News">NEWS</a></li>
-						<li><a class="menulist" href="#AboutUs">ABOUT</a></li>				
-						<li><a href="product.html">PRODUCT</a></li>
-						<li><a class="menulist" href="#ContactUs">CONTACT</a></li>
-					</ul>
-
 				</div>
 
-				<div class="logo"><a href="index.html">UNDE-Using Nature & Doing Eco</a></div>
+				<ul class="menu">
+					<li><a class="hometop" href="#">HOME</a></li>
+					<li><a class="menulist" href="#News">NEWS</a></li>
+					<li><a class="menulist" href="#AboutUs">ABOUT</a></li>				
+					<li><a href="product.html">PRODUCT</a></li>
+					<li><a class="menulist" href="#ContactUs">CONTACT</a></li>
+				</ul>
+
+				<!-- (2020/1/17修改-logo增加h1[每個網頁一定會有一個h1)] -->
+				<div class="logo"><a href="index.html"><h1>UNDE-Using Nature & Doing Eco</h1></a></div>
 				
 			</div>
 		</div>
+		<!-- (2020/2/4修改-1-html階層維持在4個以內)end-->
 		<!-- **共通區end** -->
 
 
 		<!-- 主視覺(寬100%*高auto),圖片輪播搭配CSS+jQuery -->
-		<!-- 原始 -->
+		<!-- (2020/1/30修改-
+		1-建議.main_image裡面的文字請改用標題標籤呈現，以提升搜尋排名、2.將主視覺改成由插入背景的方式呈現)start -->	
 		<div class="main_image">
-			<div class="main_image_bg"><img src="img/mainpt00_b.jpg"></div>			
-			<img class="main_change" src="img/mainpt01_b.jpg" width="1920" height="950">
-			<img class="main_change" src="img/mainpt03_b.jpg" width="1920" height="950">
-			<img class="main_change" src="img/mainpt02_b.jpg" width="1920" height="950">
+			<div class="main_image_bg"><img src="img/mainpt00_b.jpg">		
+				<div class="main_change_1">
+					<h2><strong>與自然共存</strong><br>
+					<hr class="hr_style"><br>
+					<span>Coexist with Nature</span></h2>
+				</div>
+				<div class="main_change_2">
+					<h2><strong>純天然原料</strong><br>
+					<hr class="hr_style"><br>
+					<span>Pure Nature Material</span></h2>
+				</div>
+				<div class="main_change_3">
+					<h2><strong>共同守護未來</strong>	<br>
+					<hr class="hr_style"><br>
+					<span>Garding Future Together</span></h2>
+				</div>
+			</div>	
 		</div>
+		<!-- (2020/1/30修改-1)end -->
 
+		<!-- 向下箭頭 -->
 		<img class="arrow" src="img/arrow48.png">
 
 

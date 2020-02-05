@@ -10,7 +10,8 @@ $fs-m:14px;
 $fs-l:$fs-m*1.4;
 $fs-s:$fs-m*0.8;
 
-// ------ |-> 共通區header(Start) -------s
+// ------ |-> 共通區header(Start) -------
+// (2020/2/4修改-1-階層修改,將menu_login和menu拆成同一階)start
 .nav{
 	z-index: 10;
 	position: fixed;
@@ -52,33 +53,41 @@ $fs-s:$fs-m*0.8;
 
 					transform:translate(2px,2px);
 				}
-			.menu{
-				// 浮動在右邊
-				float: right;
-				margin-right: 20px;
-				li{
-					// 水平排列
-					float: left;
-					padding: 15px 20px;
-					a{					
-						text-decoration: none;
-						color:#fff;										
-						font-weight: bolder;
-						letter-spacing: 3px;
-						padding-bottom: 10px;
-						font-size:$fs-s;
-					}
-					a:hover{
-						border-bottom: 3px solid #fff;				
-						transition:all 0.1s;
-					}
-				}
-			}
 			.hamburgermenu{
 				// PC ver.先隱藏menu
 				display:none;
 			}		
 		  }
+
+		.menu{
+			// 浮動在右邊
+			float: right;
+			margin-right: 20px;
+			li{
+				// 水平排列
+				float: left;
+				//(2020/1/31修改)start-按鈕主要設定在<a>,增加點擊範圍。li只下左右padding(美觀,讓border-bottom不要太長)
+				padding: 0 20px;
+				a{					
+					text-decoration: none;
+					color:#fff;										
+					font-weight: bolder;
+					letter-spacing: 3px;
+					// padding-bottom: 10px;
+					font-size:$fs-s;
+
+					//(2020/1/31修改)start- <a>設定display:block+padding上下(左右寬度下在li),增加按鈕點擊範圍
+					display: block;
+					padding: 15px 0;
+					//(2020/1/31修改)end
+				}
+				a:hover{
+					border-bottom: 3px solid #fff;
+					border-bottom-width: 20%;			
+					transition:all 0.1s;
+				}
+			}
+		}
 
 		.logo{
 			// 浮動在左邊
@@ -98,21 +107,24 @@ $fs-s:$fs-m*0.8;
 }
 
 
+
 // ------ |-> RWD(Start) -------
 // w900設定
 @include w900{
 		.nav .header {
 			.menu_login{				
-				.login{padding: 15px 10px;}
-			.menu {			
-			li{
-				padding:15px 10px;
-				a{
-					letter-spacing: 2px;
+				.login{
+					padding: 15px 10px;
 				}
-				}			
-		}
 	  }
+			.menu {			
+				li{
+					padding:0 10px;
+					a{
+						letter-spacing: 2px;
+						}
+					}
+			}
 	}
 }
 
@@ -120,6 +132,11 @@ $fs-s:$fs-m*0.8;
 @include ipad{
 	.nav .header {		
 		padding: 10px 10px;
+		
+		// (2020/1/30修改)start
+		background-color: #000;
+		// (2020/1/30修改)end
+
 		/*上層:讓下層.menu對齊用*/
 		position: relative;
 
@@ -130,50 +147,6 @@ $fs-s:$fs-m*0.8;
 				margin-top: 8px;
 				float: right;
 				margin-right: 10px;				
-			}
-			.menu{
-				// menu先隱藏起來：設定max-height&overflow (注意：不能使用display:none;)
-				max-height: 0;
-				overflow:hidden;
-				/*CSS3:指定max-height特效轉場時間*/
-	    		transition: max-height 2.5s;
-			    /*下層：對齊上層header。
-		      	設定出現位置在menu_login的下方大於54px)
-		        (重要)並設定left:0,right:0,就可以讓menu左右滿版*/
-			    position: absolute;
-				top: 60px;
-				left: 0;
-				right: 0;
-				margin-right: 0;
-				/*將直式menu蓋在網頁最上層*/
-				z-index:99;
-				li{
-					/*變為直式menu(取消浮動)*/
-					float:none;					
-					background-color:#000;
-					border-bottom: 0.5px solid #fff;
-					// 取消橫式排版的padding
-					padding: 0;
-					a{	
-						// 設定a寬度跟li一樣
-						display: block;
-						width: 100%;
-						// 行高需高於44px(手指寬度為44px)
-						line-height: 60px;
-
-						text-align: center;
-						color:#fff;	
-
-						// 取消橫式排版的padding
-						padding: 0;				
-					}
-					a:hover{
-						border-bottom: none;
-						color:#fff;
-						background-color: #034d8a;
-					}
-				}
-				li:first-child{border-top: 0.5px solid #fff;}			
 			}
 			.hamburgermenu{
 			display:block;
@@ -188,8 +161,53 @@ $fs-s:$fs-m*0.8;
 				transform:translate(2px,2px);
 			}
 		}
+		.menu{
+			// menu先隱藏起來：設定max-height&overflow (注意：不能使用display:none;)
+			max-height: 0;
+			overflow:hidden;
+			/*CSS3:指定max-height特效轉場時間*/
+    		transition: max-height 2.5s;
+		    /*下層：對齊上層header。
+	      	設定出現位置在menu_login的下方大於54px)
+	        (重要)並設定left:0,right:0,就可以讓menu左右滿版*/
+		    position: absolute;
+			top: 60px;
+			left: 0;
+			right: 0;
+			margin-right: 0;
+			/*將直式menu蓋在網頁最上層*/
+			z-index:99;
+			li{
+				/*變為直式menu(取消浮動)*/
+				float:none;					
+				background-color:#000;
+				border-bottom: 0.5px solid #fff;
+				// 取消橫式排版的padding
+				padding: 0;
+				a{	
+					// 設定a寬度跟li一樣
+					display: block;
+					width: 100%;
+					// 行高需高於44px(手指寬度為44px)
+					line-height: 60px;
+
+					text-align: center;
+					color:#fff;	
+
+					// 取消橫式排版的padding
+					padding: 0;				
+				}
+				a:hover{
+					border-bottom: none;
+					color:#fff;
+					background-color: #034d8a;
+				}
+			}
+			li:first-child{border-top: 0.5px solid #fff;}			
+		}
 	}
 }
+
 
 // mobile
  @include mobile{
@@ -222,10 +240,11 @@ $fs-s:$fs-m*0.8;
  }
 
 /*jQuery點擊後,顯示menu*/
- .menu-show .header  .menu_login .menu {
+ .menu-show .header .menu {
 	max-height: 375px;
 }
 //  ------ RWD (End) <-| -------
+// (2020/2/4修改-1-階層修改)end
 // ------ 共通區header(End) <-| -------
 
 
