@@ -110,11 +110,14 @@ $(function(){
 
 	 	// 【nav動畫功能】
 	 	// 當視窗往下滑到一定高度時,nav瀏覽列加上黑底色
-	 	// (2020/1/30追加寬度條件,windowWidth>769px以上,此功能才會啟動,所以ipad以下都不會重複出現menu動畫)
+	 	// (2020/1/30追加寬度條件,windowWidth>769px以上,此功能才會啟動,所以ipad以下都不會重複出現menu動畫)	 	
 	 	if(scrollPos>windowHeight*0.8|scrollPos>newsHeight-1 && !showSkill && windowWidth>=769){
 	 		// slideDown動畫只顯示一次(在最上方先宣告var showSkill=false)
 			showSkill=true;
-			$(".nav").hide().css({"background-color":"#000"}).slideDown(1000); 	
+			// (2020/2/10修改1)start-不使用style方式加上背景(權重100),而是使用addClass來加上背景色(權重10)
+			// $(".nav").hide().css({"background-color":"#000"}).slideDown(1000);
+			$(".nav").hide().addClass("nav-bg").slideDown(1000);
+			// (2020/2/10修改1)end
 	 	}
 	 });
 });
